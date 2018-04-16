@@ -1,5 +1,6 @@
-
-<h1><%= @song.title %></h1>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=ruby;skin=desert"></script>
+<h1>Title: <%= @song.title %></h1>
+<h4>Genre: <%= @song.genre %></h4>
 <% if session[:user_id] %>
   <% form_for @song_playlist do |f| %>
     <%= f.label :playlist %>
@@ -7,9 +8,12 @@
   <% end %>
 <% end %>
 <img src="<%= @song.img %>" alt=""><br>
-<%= @song.code %><br>
-<%= @song.song_url %><br>
-<%= @song.genre %><br>
+<h4><%= link_to "Link to song", @song.song_url %></h4>
+<pre class="prettyprint">
+<%= @song.code %>
+</pre>
+
+
 
 
 
