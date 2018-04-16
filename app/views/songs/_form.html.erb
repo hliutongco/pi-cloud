@@ -19,8 +19,11 @@
     <%= f.text_area :code %>
 
     <%= f.text_field :genre %>
-    <%= f.text_field :song_url %>
     <%= f.text_field :img %>
+
+    <%= f.file_field :url %>
+
+    <%= f.hidden_field :user_id, :value => @song.user_id %>
     <%= f.submit button_label %>
   <% end %>
 <div>
