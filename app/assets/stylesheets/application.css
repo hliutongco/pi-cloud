@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ pre {
+   max-width: 500px;
+   max-height: 500px;
+   overflow: scroll;
+ }
