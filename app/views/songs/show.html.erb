@@ -8,14 +8,12 @@
   <% end %>
 <% end %>
 <img src="<%= @song.img %>" alt=""><br>
-<!-- <h4><%= link_to "Link to song", @song.song_url %></h4> -->
-
-<audio controls>
-  <source src="@song.song_url" type="audio/ogg">
-  <source src="@song.song_url" type="audio/mpeg">
+<audio controls autoplay>
+  <source src="<%= @song.url.url %>" type="audio/ogg">
+  <source src="<%= @song.url.url %>" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 
 <pre class="prettyprint">
-  <%= @song.code %>
+<%= @song.code %>
 </pre>

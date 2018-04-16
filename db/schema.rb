@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20180416154602) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.string "song_url"
+    t.string "url_data"
     t.string "code"
     t.string "title"
     t.string "genre"
