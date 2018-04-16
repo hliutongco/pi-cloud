@@ -1,0 +1,43 @@
+<h1><%= @user.name %>'s '<%= @playlist.name %>'</h1>
+<%= @playlist.description %>
+
+<% if @playlist.songs.empty? %>
+  <p>There are currently no songs</p>
+<% else %>
+  <% @playlist.songs.each do |s| %>
+    <ol>
+      <li><%= link_to s.title, s %></li>
+    </ol>
+  <% end %>
+<% end %>
+
+<!--
+    # create_table "playlists", force: :cascade do |t|
+    #   t.integer "user_id"
+    #   t.string "name"
+    #   t.string "description"
+    #   t.datetime "created_at", null: false
+    #   t.datetime "updated_at", null: false
+    # end
+
+    # create_table "songs", force: :cascade do |t|
+    #   t.string "song_url"
+    #   t.string "code"
+    #   t.string "title"
+    #   t.string "genre"
+    #   t.string "img"
+    #   t.integer "user_id"
+    #   t.integer "playlist_id"
+    #   t.datetime "created_at", null: false
+    #   t.datetime "updated_at", null: false
+    # end
+
+    # create_table "users", force: :cascade do |t|
+    #   t.string "name"
+    #   t.string "email"
+    #   t.string "password"
+    #   t.string "bio"
+    #   t.string "img"
+    #   t.datetime "created_at", null: false
+    #   t.datetime "updated_at", null: false
+    # end -->
