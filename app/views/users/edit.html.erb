@@ -1,0 +1,30 @@
+<% if flash[:errors] %>
+  <ul>
+	  <% flash[:errors].each do |error| %>
+  <li><%= error %></li>
+	  <% end %>
+	</ul>
+<% end %>
+
+<h1>Edit Your Porfile</h1>
+
+<%= form_for @user do | f | %>
+     <%= f.label :name %>
+     <%= f.text_field :name %><br>
+     <%= f.label :email %>
+     <%= f.text_field :email %><br>
+     <%= f.label :password %>
+     <%= f.text_field :password %><br>
+     <%= f.label :bio %>
+     <%= f.text_area :bio %><br>
+     <%= f.label :img_url %>
+     <%= f.text_field :img %><br>
+     <%= f.submit 'Update Profile!'%>
+<% end %>
+
+<div class='delete'>
+  <h4>Delete Your Account</h4>
+  <%= form_tag user_path(@user), method: 'delete' do %>
+    <%= submit_tag 'Delete Account' %>
+  <% end %>
+</div>

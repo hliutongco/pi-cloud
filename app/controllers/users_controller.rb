@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
 
-
+  def index
+  end
+  
   def show
     @user = User.find(params[:id])
     @playlists = @user.playlists
-    @songs = @user.songs 
+    @songs = @user.songs
   end
 
   def new
@@ -13,6 +15,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    redirect_to @user
+    if @user.valid?
+      redirect_to @user
+    else
+      flash[:errors] = @user.errors.full_messages
+      redirect_to new_user_path
+    end
   end
 
   def edit
@@ -20,11 +29,20 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.update(user_params)
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.valid?
+      redirect_to @user
+    else
+      flash[:errors] = @user.errors.full_messages
+		  redirect_to edit_user_path
+    end
   end
 
   def destroy
     @user = User.find(params[:id])
+    @user.destroy(params[:id])
+	  redirect_to users_path
   end
 
   private
