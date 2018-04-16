@@ -5,7 +5,7 @@
 <% if @playlists.count > 0 %>
   <h2>Playlists</h2>
   <% @playlists.each do |p| %>
-    <%= link_to p.name, p %>
+    <%= link_to p.name, user_playlist_path(@user, p) %>
   <% end %>
 <% end %>
 <% if @songs.count > 0 %>

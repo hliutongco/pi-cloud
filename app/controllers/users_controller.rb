@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def index
   end
-  
+
   def show
     @user = User.find(params[:id])
     @playlists = @user.playlists
@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    redirect_to @user
     if @user.valid?
       redirect_to @user
     else
