@@ -1,22 +1,30 @@
-<% if flash[:errors] %>
-  <h1>Errors: </h1>
-  <ul>
-    <% flash[:errors].each do |e| %>
-      <li><%= e %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class= "col-md-6">
+  <% if flash[:errors] %>
 
-<%= form_for @song do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %> <br>
-  <%= f.label :code %>
-  <%= f.text_area :code %> <br>
-  <%= f.label :genre %>
-  <%= f.text_field :genre %> <br>
-  <%= f.label :song_url %>
-  <%= f.text_field :song_url %> <br>
-  <%= f.label :img %>
-  <%= f.text_field :img %> <br><br>
-  <%= f.submit button_label %>
-<% end %>
+    <div class="mid-section alert alert-danger" role="alert">
+      <% flash[:errors].each do |e| %>
+        <%= e %>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+  <% end %>
+
+  <%= bootstrap_form_for @song do |f| %>
+
+    <%= f.text_field :title %>
+
+    <%= f.text_area :code %>
+
+    <%= f.text_field :genre %>
+    <%= f.text_field :song_url %>
+    <%= f.text_field :img %>
+    <%= f.submit button_label %>
+  <% end %>
+<div>
+<!--
+<div class="alert alert-danger" role="alert">
+  This is a danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div> -->
