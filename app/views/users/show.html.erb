@@ -2,10 +2,16 @@
 <img src=<%= @user.img %>>
 <h2>Bio</h2>
 <p><%= @user.bio %></p>
-<% if @playlists %>
+<% if @playlists.count > 0 %>
   <h2>Playlists</h2>
   <% @playlists.each do |p| %>
     <%= link_to p.name, p %>
+  <% end %>
+<% end %>
+<% if @songs.count > 0 %>
+  <h2>Songs</h2>
+  <% @songs.each do |s| %>
+    <%= link_to s.title, s %>
   <% end %>
 <% end %>
 <h3>Contact</h3>
