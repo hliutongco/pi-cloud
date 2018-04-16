@@ -20,6 +20,4 @@
 <!-- this part is just for Logged in user
 not for other users viewing the page -->
 
-<h4><%= link_to "Edit Account", edit_user_path(@user) %></h4>
-<h4><%= link_to "Add Song", new_song_path(:user_id => @user.id) %></h4>
-<h4><%= link_to "Add Playlist", new_user_playlist_path(:user_id => @user.id) %></h4>
+<h4><%= link_to "Edit Account", edit_user_path(@user) %> | <%= link_to "Add Song", new_song_path(:user_id => @user.id)%> | <%= link_to "Add Playlist", new_user_playlist_path(:user_id => @user.id) %></h4>
