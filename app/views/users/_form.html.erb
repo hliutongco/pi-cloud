@@ -18,7 +18,7 @@
        <%= f.email_field :email %>
        <%= f.password_field :password %>
        <%= f.text_area :bio %>
-       <%= f.file_field :avatar %>
+       <%= f.file_field :avatar, hide_label: true, placeholder: "Upload a profile image" %>
        <%= f.submit button_label, class: "btn btn-primary" %>
   <% end %>
 
