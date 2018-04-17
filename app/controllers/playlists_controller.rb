@@ -14,12 +14,14 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist.new(playlist_params)
+    @playlist = Playlist.new(playlist_params)
+    @playlist.user_id = @user.id
     if @playlist.save
-      redirect_to playlist(@playlist)
+
+      redirect_to user_playlist_path(@user, @playlist)
     else
       flash[:errors] = @playlist.errors.full_messages
-      redirect_to new_playlist_path
+      redirect_to new_user_playlist_path
     end
   end
 
@@ -29,7 +31,7 @@ class PlaylistsController < ApplicationController
   def update
     @playlist.update(playlist_params)
     if @playlist.valid?
-      redirect_to playlist(@playlist)
+      redirect_to user_playlist_path(@playlist)
     else
       flash[:errors] = @playlist.errors.full_messages
       redirect_to edit_playlist_path(@user, @playlist)
@@ -47,7 +49,7 @@ class PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:name, :description, :user_id)
+    params.require(:playlist).permit(:name, :description)
   end
 
   def set_user

@@ -1,2 +1,5 @@
 <h1>Edit '<%= @song.title %>'</h1>
 <%= render partial: "form", locals: { button_label: "Edit Song" } %>
+<%= form_tag user_song_path(@user, @song), method: 'delete' do %>
+  <%= submit_tag "Delete song"%>
+<% end %>

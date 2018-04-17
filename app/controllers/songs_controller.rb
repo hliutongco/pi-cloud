@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
   before_action :set_songs, only: [:show, :edit, :update, :destroy, :add_to_playlist]
+  before_action :set_user
 
   def index
     @songs = Song.all
@@ -19,10 +20,10 @@ class SongsController < ApplicationController
   def update
     @song.update(song_params)
     if @song.valid?
-      redirect_to @song
+      redirect_to [@user, @song]
     else
       flash[:errors] = @song.errors.full_messages
-      redirect_to edit_song_path(@song)
+      redirect_to edit_user_song_path(@user, @song)
     end
   end
 
@@ -37,15 +38,17 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     if @song.save
-      redirect_to @song
+      redirect_to user_song_path(@user, @song)
     else
       flash[:errors] = @song.errors.full_messages
-      redirect_to new_song_path
+      redirect_to new_user_song_path
     end
   end
 
   def destroy
+    # @user.song.find(@song).destroy
     @song.destroy
+    redirect_to user_songs_path
   end
 
   private
@@ -56,6 +59,10 @@ class SongsController < ApplicationController
 
   def song_params
     params.require(:song).permit(:url, :code, :title, :genre, :avatar, :user_id)
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
     # create_table "playlists", force: :cascade do |t|
