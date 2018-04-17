@@ -1,31 +1,41 @@
-<body id="song-show">
-  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=ruby;skin=desert"></script>
-  <h1>Title: <%= @song.title %></h1>
-  <h4>Genre: <%= @song.genre %></h4>
+<div id="song-show" class="full-page">
+  <div class="col-md-6 margins translucent">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=ruby;skin=desert"></script>
+    <h1>Title: <%= @song.title %></h1>
+    <h4>Genre:
+      <% if @song.genre != "" %>
+        <%= @song.genre %>
+      <% else %>
+        n/a
+      <% end %>
+    </h4>
 
-  <% if logged_in? %>
-    <h5>Add this song to a playlist</h5>
-
-    <%= form_for @song_playlist, url: add_playlist_song_path do |f| %>
-      <%= f.collection_select :playlist_id, @playlists, :id, :name %>
-      <%= f.submit %>
-    <% end %>
     <br>
 
-  <% end %>
+    <% if @user.avatar.url != "/images/original/missing.png" %>
+      <%= image_tag @song.avatar.url(:medium) %><br>
+    <% end %>
 
+    <audio controls autoplay>
+      <source src="<%= @song.url.url %>" type="audio/ogg">
+      <source src="<%= @song.url.url %>" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <br><br>
 
-  <% if @user.avatar.url != "/images/original/missing.png" %>
-    <%= image_tag @song.avatar.url(:medium) %><br>
-  <% end %>
+    <% if logged_in? && @user == current_user %>
+        <h5>Add this song to your playlist:</h5>
 
-  <audio controls autoplay>
-    <source src="<%= @song.url.url %>" type="audio/ogg">
-    <source src="<%= @song.url.url %>" type="audio/mpeg">
-  Your browser does not support the audio element.
-  </audio>
+        <%= form_for @song_playlist, url: add_playlist_song_path do |f| %>
+          <%= f.collection_select :playlist_id, @playlists, :id, :name, :prompt => 'Select Playlist' %>
+          <%= f.submit "Add Song" %>
+        <% end %>
 
-  <pre class="prettyprint">
-  <%= @song.code %>
-  </pre>  
-</body>
+    <% end %>
+    <br><br>
+
+    <pre class="prettyprint">
+    <%= @song.code %>
+    </pre>
+  </div>
+</div>

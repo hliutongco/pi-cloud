@@ -5,25 +5,18 @@
       <% flash[:errors].each do |e| %>
         <%= e %><br/>
       <% end %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
     </div>
 
   <% end %>
 
   <%= bootstrap_form_for [@user,@song] do |f| %>
-
     <%= f.text_field :title %>
-
     <%= f.text_area :code %>
-
     <%= f.text_field :genre %>
     <%= f.file_field :avatar, hide_label: true, placeholder: "Upload an image" %>
-
     <%= f.file_field :url, hide_label: true, placeholder: "Upload a song file" %>
-
     <%= f.hidden_field :user_id, :value => @song.user_id %>
     <%= f.submit button_label, class: "btn btn-primary" %>
   <% end %>
+
 </div>

@@ -3,17 +3,13 @@
 
     <div class="mid-section alert alert-danger" role="alert">
       <% flash[:errors].each do |e| %>
-        <%= e %><br/>
+        <%= e %> <br/>
       <% end %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
     </div>
 
   <% end %>
 
   <%= bootstrap_form_for @user do | f | %>
-
        <%= f.text_field :name %>
        <%= f.email_field :email %>
        <%= f.password_field :password %>
