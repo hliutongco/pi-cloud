@@ -1,28 +1,4 @@
-<<<<<<< HEAD
-<body id="user_create">
-  <% if flash[:errors] %>
-    <ul>
-  	  <% flash[:errors].each do |error| %>
-    <li><%= error %></li>
-  	  <% end %>
-  	</ul>
-  <% end %>
 
-
-  <h1>Create New User</h1>
-
-  <%= bootstrap_form_for @user do | f | %>
-
-       <%= f.text_field :name %>
-       <%= f.email_field :email %>
-       <%= f.password_field :password %>
-       <%= f.text_area :bio %>
-       <%= f.file_field :avatar %>
-       <%= f.submit 'Create User!', class: "btn btn-primary" %>
-  <% end %>  
-</body>
-=======
 <h1>Create New User</h1>
 
-<%= render partial: "form", locals: { button_label: "Create Profile" } %>
->>>>>>> 7d0e4c8b01a8a82a97383699cc75357081e2dd68
+<%= render partial: "form", locals: { button_label: "Create User" } %>
