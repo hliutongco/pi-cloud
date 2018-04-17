@@ -6,14 +6,41 @@
     <%= favicon_link_tag 'glyphicons-240-albums.png' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="<%= root_path %>"><strong>PiCloud</strong></a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="<%= root_path %>">Home</a></li>
+          <li>
+            <% if logged_in? %>
+              <a href="<%= user_songs_path(current_user) %>">Songs</a>
+            <% else %>
+              <a href="<%= login_path %>">Songs</a>
+            <% end %>
+          </li>
+          <li>
+            <% if logged_in? %>
+              <a href="<%= user_playlists_path(current_user) %>">Playlists</a>
+            <% else %>
+              <a href="<%= login_path %>">Playlists</a>
+            <% end %>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+         <% if logged_in? %>
+            <li><%= link_to "Logout", logout_path, method: "POST" %></li>
+          <% else %>
+            <li><%= link_to "Login", login_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
   </head>
 
   <body>
-    <% if logged_in? %>
-     <%= link_to "Logout", logout_path, method: "POST" %>
-   <% else %>
-     <%= link_to "Login", login_path %>
-   <% end %>
     <%= yield %>
   </body>
 </html>
