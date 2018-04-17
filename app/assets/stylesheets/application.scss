@@ -38,9 +38,8 @@
  }
 
 .translucent {
-  padding: 1em 1em;
   background-color: #e9ecef;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,1.0);
 }
 
 .margins{
@@ -48,74 +47,113 @@
    position:relative;
 }
 
- #login {
-   background: url("login.jpg") no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
- }
+#login {
+ background: url("login.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 
- .full-page, body {
+.full-page, body {
   overflow-y: scroll;
   position: fixed;
   width:100%;
   height:100%;
   margin:0;
   padding:0;
- }
+}
 
- #user-show {
-   width:100%;
-   height:100%;
-   margin:0;
+#user-show {
+ background: url("tropicaleo.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#users-index {
+ background: url("clouds.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#user-new {
+ background: url("clouds1.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#user-edit {
+ background: url("clouds2.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 
-   background: url("tropicaleo.jpg") no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
- }
+#playlist-show {
+ background: url("collection.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
- #playlist-show {
-   background: url("collection.jpg") no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
- }
+#playlists-index {
+ background: url("console.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#playlist-new {
+ background: url("launch.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#playlist-edit {
+ background: url("beach.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
- #song-show {
-   background: url("record.jpg") no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
- }
+#song-show {
+ background: url("record.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#song-new {
+ background: url("city.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#song-index {
+ background: url("control.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#song-edit {
+ background: url("palms.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
- #song-new {
-   background: url("cd.jpg") no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
- }
- #song-index {
-   background: url("cds.jpg") no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
- }
- #song-edit {
-   background: url("palms.jpg") no-repeat fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
- }
 
  .navbar { margin-bottom: 0 }
 
@@ -319,3 +357,16 @@
         width:100%
     }
 }
+
+  .navbar { margin-bottom: 0 }
+
+
+.center {
+   width: 50%;
+   height: 50%;
+   overflow: auto;
+   margin: auto;
+   position: absolute;
+   top: 0; left: 0; bottom: 0; right: 0;
+   padding-bottom: 1em;
+ }

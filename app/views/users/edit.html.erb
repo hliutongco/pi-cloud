@@ -1,10 +1,12 @@
-<h1>Edit Your Profile</h1>
+<div id="used-edit" class="full-page">
+  <h1>Edit Your Profile</h1>
 
-<%= render partial: "form", locals: { button_label: "Update Profile" } %>
+  <%= render partial: "form", locals: { button_label: "Update Profile" } %>
 
-<div class='delete'>
-  <h4>Delete Your Account</h4>
-  <%= form_tag user_path(@user), method: 'delete' do %>
-    <%= submit_tag 'Delete Account' %>
-  <% end %>
+  <div class='delete'>
+    <h4>Delete Your Account</h4>
+    <%= form_tag user_path(@user), method: 'delete' do %>
+      <%= submit_tag 'Delete Account' %>
+    <% end %>
+  </div>
 </div>
