@@ -7,10 +7,11 @@ class SongsController < ApplicationController
   end
 
   def show
-    @song_playlist = SongPlaylist.new
-    if session[:user_id]
-      @user = User.find(session[:user_id])
+    # @song_playlist = SongPlaylist.new
+    if logged_in?
+      @user = current_user
       @playlists = @user.playlists
+      @song_playlist = SongPlaylist.new
     end
   end
 
@@ -27,7 +28,12 @@ class SongsController < ApplicationController
     end
   end
 
-  def add_to_playlist(user_id, playlist_id)
+  def add_to_playlist
+    @playlist = params[:song_playlist][:playlist_id]
+    @playlist_song = SongPlaylist.new(playlist_song_params)
+    @playlist_song.song_id = params[:id]
+    @playlist_song.save
+    redirect_to user_playlist_path(@user, @playlist)
   end
 
   def new
@@ -46,7 +52,6 @@ class SongsController < ApplicationController
   end
 
   def destroy
-    # @user.song.find(@song).destroy
     @song.destroy
     redirect_to user_songs_path
   end
@@ -63,6 +68,10 @@ class SongsController < ApplicationController
 
   def set_user
     @user = User.find(params[:user_id])
+  end
+
+  def playlist_song_params
+    params.require(:song_playlist).permit(:playlist_id)
   end
 
 

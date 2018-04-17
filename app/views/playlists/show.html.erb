@@ -6,7 +6,7 @@
 <% else %>
   <% @playlist.songs.each do |s| %>
     <ol>
-      <li><%= link_to s.title, s %></li>
+      <li><%= link_to s.title, [@user, s] %></li>
     </ol>
   <% end %>
 <% end %>

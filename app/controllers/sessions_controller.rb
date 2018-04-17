@@ -6,14 +6,17 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
-      # can login
       session[:user_id] = user.id
       redirect_to user
     else
-      #incorrect credentials
       flash[:errors] = "Invalid credentials"
       redirect_to login_path
     end
+  end
+
+  def logout
+    session.delete(:user_id)
+    redirect_to login_path
   end
 
 end
