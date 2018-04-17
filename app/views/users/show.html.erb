@@ -1,6 +1,7 @@
 <h1><%= @user.name %></h1>
 <%= image_tag @user.avatar.url(:medium) %>
 <h2>Bio</h2>
+
 <p><%= @user.bio %></p>
 <% if @playlists.count > 0 %>
   <h2>Playlists</h2>
@@ -11,7 +12,7 @@
 <% if @songs.count > 0 %>
   <h2>Songs</h2>
   <% @songs.each do |s| %>
-    <%= link_to s.title, s %>
+    <%= link_to s.title, [@user, s] %>
   <% end %>
 <% end %>
 <h3>Contact</h3>
@@ -19,5 +20,6 @@
 
 <!-- this part is just for Logged in user
 not for other users viewing the page -->
-
-<h4><%= link_to "Edit Account", edit_user_path(@user) %> | <%= link_to "Add Song", new_song_path(:user_id => @user.id)%> | <%= link_to "Add Playlist", new_user_playlist_path(:user_id => @user.id) %></h4>
+<% if session[:user_id] == @user.id %>
+  <h4><%= link_to "Edit Account", edit_user_path(@user) %> | <%= link_to "Add Song", new_user_song_path(:user_id => @user.id)%> | <%= link_to "Add Playlist", new_user_playlist_path(:user_id => @user.id) %></h4>
+<% end %>

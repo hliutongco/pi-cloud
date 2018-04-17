@@ -75,6 +75,7 @@ GEM
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.0)
     aws-sigv4 (1.0.2)
+    bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap (4.1.0)
       autoprefixer-rails (>= 6.0.3)
@@ -233,6 +234,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-s3 (~> 1.2)
+  bcrypt (~> 3.1.7)
   bootstrap (~> 4.1.0)
   bootstrap-sass (~> 3.3.6)
   bootstrap_form!
