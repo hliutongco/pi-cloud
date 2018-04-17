@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: [:show, :edit, :destroy, :update, :all_songs, :remove_song, :add_song]
+  before_action :set_playlist, only: [:show, :edit, :destroy, :update, :all_songs, :remove_song]
   before_action :set_user#, only: [:show, :edit, :destroy, :update, :index]
 
   def index
@@ -15,7 +15,7 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = Playlist.new(playlist_params)
-    @playlist.user_id = @user.id
+    @playlist.user_id = current_user.id
     if @playlist.save
 
       redirect_to user_playlist_path(@user, @playlist)
@@ -23,6 +23,13 @@ class PlaylistsController < ApplicationController
       flash[:errors] = @playlist.errors.full_messages
       redirect_to new_user_playlist_path
     end
+  end
+
+  def remove_song
+    # byebug
+    @song_playlist = SongPlaylist.find_by(song_id: params[:song_id], playlist_id: params[:id])
+    @song_playlist.destroy
+    redirect_to user_playlist_path(@user, @playlist)
   end
 
   def edit

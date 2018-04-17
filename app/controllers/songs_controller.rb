@@ -7,10 +7,11 @@ class SongsController < ApplicationController
   end
 
   def show
-    @song_playlist = SongPlaylist.new
-    if session[:user_id]
-      @user = User.find(session[:user_id])
+    # @song_playlist = SongPlaylist.new
+    if logged_in?
+      @user = current_user
       @playlists = @user.playlists
+      @song_playlist = SongPlaylist.new
     end
   end
 
@@ -27,7 +28,12 @@ class SongsController < ApplicationController
     end
   end
 
-  def add_to_playlist(user_id, playlist_id)
+  def add_to_playlist
+    @playlist = params[:song_playlist][:playlist_id]
+    @playlist_song = SongPlaylist.new(playlist_song_params)
+    @playlist_song.song_id = params[:id]
+    @playlist_song.save
+    redirect_to user_playlist_path(@user, @playlist)
   end
 
   def new
@@ -46,7 +52,6 @@ class SongsController < ApplicationController
   end
 
   def destroy
-    # @user.song.find(@song).destroy
     @song.destroy
     redirect_to user_songs_path
   end
@@ -65,39 +70,9 @@ class SongsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-    # create_table "playlists", force: :cascade do |t|
-    #   t.integer "user_id"
-    #   t.string "name"
-    #   t.string "description"
-    #   t.datetime "created_at", null: false
-    #   t.datetime "updated_at", null: false
-    # end
-    #
-    # create_table "song_playlists", force: :cascade do |t|
-    #   t.integer "playlist_id"
-    #   t.integer "song_id"
-    # end
-    #
-    # create_table "songs", force: :cascade do |t|
-    #   t.string "song_url"
-    #   t.string "code"
-    #   t.string "title"
-    #   t.string "genre"
-    #   t.string "img"
-    #   t.integer "user_id"
-    #   t.datetime "created_at", null: false
-    #   t.datetime "updated_at", null: false
-    # end
-    #
-    # create_table "users", force: :cascade do |t|
-    #   t.string "name"
-    #   t.string "email"
-    #   t.string "password"
-    #   t.string "bio"
-    #   t.string "img"
-    #   t.datetime "created_at", null: false
-    #   t.datetime "updated_at", null: false
-    # end
+  def playlist_song_params
+    params.require(:song_playlist).permit(:playlist_id)
+  end
 
 
 end

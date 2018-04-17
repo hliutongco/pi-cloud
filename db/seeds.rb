@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: "lilruby", email: "lilrubyrox@gmail.com", password: "lilrubyrox", bio: "lil ruby rox", img: "https://cdn-images-1.medium.com/max/1600/1*p0uOGL9JugR5rAQAu8pujA.png")
-User.create(name: "lilbooboo", email: "lilbooboo@gmail.com", password: "lilbooboorox", bio: "lil booboo rox", img: "http://berryripe.com/wp-content/uploads/2012/10/band-aid.jpg")
-User.create(name: "lildiamond", email: "lildiamond@gmail.com", password: "lildiamondrox", bio: "lil diamond rox", img: "https://assets.ritani.com/assets/education_channel/diamonds/diamond-anatomy-27680883da28fb94afdbd63f43b03f48.png")
+User.create(name: "lilruby", email: "lilrubyrox@gmail.com", password_digest: "lilrubyrox", bio: "lil ruby rox", img: "https://cdn-images-1.medium.com/max/1600/1*p0uOGL9JugR5rAQAu8pujA.png")
+User.create(name: "lilbooboo", email: "lilbooboo@gmail.com", password_digest: "lilbooboorox", bio: "lil booboo rox", img: "http://berryripe.com/wp-content/uploads/2012/10/band-aid.jpg")
+User.create(name: "lildiamond", email: "lildiamond@gmail.com", password_digest: "lildiamondrox", bio: "lil diamond rox", img: "https://assets.ritani.com/assets/education_channel/diamonds/diamond-anatomy-27680883da28fb94afdbd63f43b03f48.png")
 
 Song.create(song_url: "http://testurl.com", code: "this is a test", title: "awesome song", genre: "conscious rap", img: "https://cdn-images-1.medium.com/max/1600/1*p0uOGL9JugR5rAQAu8pujA.png", user_id: 1)
 Song.create(song_url: "http://testurl2.com", code: "this is a second test", title: "sick beats", genre: "trap", img: "http://berryripe.com/wp-content/uploads/2012/10/band-aid.jpg", user_id: 2)

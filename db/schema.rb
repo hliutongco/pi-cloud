@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20180417012307) do
     t.string "code"
     t.string "title"
     t.string "genre"
-    t.string "img"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,9 +42,8 @@ ActiveRecord::Schema.define(version: 20180417012307) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.string "bio"
-    t.string "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar_file_name"

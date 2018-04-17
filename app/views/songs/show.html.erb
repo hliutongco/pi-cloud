@@ -1,13 +1,23 @@
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=ruby;skin=desert"></script>
 <h1>Title: <%= @song.title %></h1>
 <h4>Genre: <%= @song.genre %></h4>
-<% if session[:user_id] %>
-  <% form_for @song_playlist do |f| %>
-    <%= f.label :playlist %>
-    <%= f.collection :playlist_id, @playlists, :id, :name %>
+
+<% if logged_in? %>
+  <h5>Add this song to a playlist</h5>
+
+  <%= form_for @song_playlist, url: add_playlist_song_path do |f| %>
+    <%= f.collection_select :playlist_id, @playlists, :id, :name %>
+    <%= f.submit %>
   <% end %>
+  <br>
+
 <% end %>
-<%= image_tag @song.avatar.url(:medium) %><br>
+
+
+<% if @user.avatar.url != "/images/original/missing.png" %>
+  <%= image_tag @song.avatar.url(:medium) %><br>
+<% end %>
+
 <audio controls autoplay>
   <source src="<%= @song.url.url %>" type="audio/ogg">
   <source src="<%= @song.url.url %>" type="audio/mpeg">
