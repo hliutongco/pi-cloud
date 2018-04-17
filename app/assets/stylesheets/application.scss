@@ -84,7 +84,30 @@
     background-size: cover;
  }
 
+ #song-new {
+   background: url("cd.jpg") no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+ }
+ #song-index {
+   background: url("cds.jpg") no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+ }
+ #song-edit {
+   background: url("palms.jpg") no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+ }
+
  .navbar { margin-bottom: 0 }
+
 
  .center {
    width: 50%;
