@@ -18,9 +18,7 @@
     <% end %>
     <% if @songs.count > 0 %>
       <h2>Songs</h2>
-      <% @songs.each do |s| %>
-        <%= link_to s.title, [@user, s] %>
-      <% end %>
+        <%= render partial: "show_cards" %>
     <% end %>
     <h3>Contact</h3>
     <p><%= @user.email %></p>
