@@ -28,8 +28,9 @@
  }
 
 .translucent {
-  background-color: #e9ecef;
-  background-color: rgba(255,255,255,1.0);
+  background-color: #eaeaea;
+  background-color: rgba(234,234,234,1.0);
+  padding-bottom: 1em;
 }
 
 .margins{
@@ -111,10 +112,12 @@
 
  .center {
    width: 50%;
-   height: 50%;
-   overflow: auto;
-   margin: auto;
    position: absolute;
-   top: 0; left: 0; bottom: 0; right: 0;
-   padding-bottom: 1em;
+   display: block;
+   overflow: auto;
+   margin: 15% auto auto 25%;
+ }
+
+ .center-text {
+   text-align: center;
  }
