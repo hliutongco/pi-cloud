@@ -1,13 +1,15 @@
-<h1>Login</h1>
-<% if flash[:errors] %>
-  <h3><% flash[:errors] %></h3>
-<% end %>
+<body id="login">
+  <h1>Login</h1>
+  <% if flash[:errors] %>
+    <h3><% flash[:errors] %></h3>
+  <% end %>
 
-<%= bootstrap_form_for sessions_path do %>
-  <%= label_tag "Email" %>
-  <%= text_field_tag "email" %><br>
-  <%= label_tag "Password" %>
-  <%= password_field_tag "password" %><br>
-  <!-- <%= text_field_tag "" %> -->
-  <%= submit_tag "Login" %>
-<% end %>
+  <%= bootstrap_form_for sessions_path do %>
+    <%= label_tag "Email" %>
+    <%= text_field_tag "email" %><br>
+    <%= label_tag "Password" %>
+    <%= password_field_tag "password" %><br>
+    <!-- <%= text_field_tag "" %> -->
+    <%= submit_tag "Login" %>
+  <% end %>
+</body>
