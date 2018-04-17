@@ -1,9 +1,10 @@
-<body id="playlist-show">
+<div id="playlist-show" class="full-page">
+    <div class="col-md-6 margins translucent">
   <h1><%= @user.name %>'s '<%= @playlist.name %>'</h1>
   <%= @playlist.description %>
-
+  <br><br>
   <% if @playlist.songs.empty? %>
-    <p>There are currently no songs</p>
+    <p>There are currently no songs. </p>
   <% else %>
     <% @playlist.songs.each do |s| %>
       <ol>
@@ -11,6 +12,8 @@
       </ol>
     <% end %>
   <% end %>
+  <br>
 
-  <h4><%= link_to "Edit Playlist", edit_user_playlist_path(@user, @playlist) %></h4>  
-</body>
+  <h4><%= link_to "Edit Playlist", edit_user_playlist_path(@user, @playlist) %></h4>
+  </div>
+</div>
