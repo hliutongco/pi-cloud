@@ -13,8 +13,8 @@
     <%= f.text_field :title %>
     <%= f.text_area :code %>
     <%= f.text_field :genre %>
-    <%= f.file_field :avatar %>
-    <%= f.file_field :url %>
+    <%= f.file_field :avatar, hide_label: true, placeholder: "Upload an image" %>
+    <%= f.file_field :url, hide_label: true, placeholder: "Upload a song file" %>
     <%= f.hidden_field :user_id, :value => @song.user_id %>
     <%= f.submit button_label, class: "btn btn-primary" %>
   <% end %>

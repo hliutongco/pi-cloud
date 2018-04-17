@@ -13,7 +13,12 @@
           <a class="navbar-brand" href="<%= root_path %>"><strong>PiCloud</strong></a>
         </div>
         <ul class="nav navbar-nav">
-          <li><a href="<%= root_path %>">Home</a></li>
+            <% if logged_in? %>
+              <li><a href="<%= user_path(current_user) %>">Your Profile</a></li>
+            <% else %>
+              <li><a href="<%= login_path %>">Your Profile</a></li>
+            <% end %>
+
           <li>
             <% if logged_in? %>
               <a href="<%= user_songs_path(current_user) %>">Songs</a>
