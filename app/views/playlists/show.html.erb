@@ -1,19 +1,19 @@
-<div id="playlist-show" class="full-page">
-    <div class="col-md-6 margins translucent">
-  <h1><%= @user.name %>'s '<%= @playlist.name %>'</h1>
-  <%= @playlist.description %>
-  <br><br>
-  <% if @playlist.songs.empty? %>
-    <p>There are currently no songs. </p>
-  <% else %>
-    <% @playlist.songs.each do |s| %>
-      <ol>
-        <li><%= link_to s.title, [@user, s] %> [<%= link_to "delete", remove_playlist_song_path(song_id: s), :method => :post %>]</li>
-      </ol>
+<div id="playlist-show">
+  <div class="col-md-8 translucent center">
+    <h1><%= @user.name %>'s '<%= @playlist.name %>'</h1>
+    <%= @playlist.description %>
+    <br><br>
+    <% if @playlist.songs.empty? %>
+      <p>There are currently no songs. </p>
+    <% else %>
+      <% @playlist.songs.each do |s| %>
+        <ol>
+          <li><%= link_to s.title, [@user, s] %> [<%= link_to "delete", remove_playlist_song_path(song_id: s), :method => :post %>]</li>
+        </ol>
+      <% end %>
     <% end %>
-  <% end %>
-  <br>
+    <br>
 
-  <h4><%= link_to "Edit Playlist", edit_user_playlist_path(@user, @playlist) %></h4>
+    <h4><%= link_to "Edit Playlist", edit_user_playlist_path(@user, @playlist) %></h4>
   </div>
 </div>

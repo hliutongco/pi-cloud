@@ -1,4 +1,4 @@
-<div class= "col-md-6">
+
   <% if flash[:errors] %>
 
     <div class="mid-section alert alert-danger" role="alert">
@@ -17,5 +17,3 @@
        <%= f.file_field :avatar, hide_label: true, placeholder: "Upload a profile image" %>
        <%= f.submit button_label, class: "btn btn-primary" %>
   <% end %>
-
-</div>
