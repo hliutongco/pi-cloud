@@ -7,7 +7,7 @@
     <%= f.collection :playlist_id, @playlists, :id, :name %>
   <% end %>
 <% end %>
-<img src="<%= @song.img %>" alt=""><br>
+<%= image_tag @song.avatar.url(:medium) %><br>
 <audio controls autoplay>
   <source src="<%= @song.url.url %>" type="audio/ogg">
   <source src="<%= @song.url.url %>" type="audio/mpeg">

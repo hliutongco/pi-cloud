@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+
 gem 'dotenv-rails', '~> 2.2', '>= 2.2.2'
 gem 'shrine'
 gem "aws-sdk-s3", '~> 1.2'

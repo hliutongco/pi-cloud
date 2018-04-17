@@ -55,7 +55,7 @@ class SongsController < ApplicationController
   end
 
   def song_params
-    params.require(:song).permit(:url, :code, :title, :genre, :img, :user_id)
+    params.require(:song).permit(:url, :code, :title, :genre, :avatar, :user_id)
   end
 
     # create_table "playlists", force: :cascade do |t|
