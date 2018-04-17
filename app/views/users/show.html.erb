@@ -1,5 +1,10 @@
 <h1><%= @user.name %></h1>
-<%= image_tag @user.avatar.url(:medium) %>
+
+<% if @user.avatar.url != "/images/original/missing.png" %>
+  <%= image_tag @user.avatar.url(:medium) %>
+<% end %>
+
+
 <h2>Bio</h2>
 
 <p><%= @user.bio %></p>

@@ -14,7 +14,10 @@
 <% end %>
 
 
-<%= image_tag @song.avatar.url(:medium) %><br>
+<% if @user.avatar.url != "/images/original/missing.png" %>
+  <%= image_tag @song.avatar.url(:medium) %><br>
+<% end %>
+
 <audio controls autoplay>
   <source src="<%= @song.url.url %>" type="audio/ogg">
   <source src="<%= @song.url.url %>" type="audio/mpeg">
