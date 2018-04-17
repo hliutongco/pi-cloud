@@ -6,40 +6,9 @@
 <% else %>
   <% @playlist.songs.each do |s| %>
     <ol>
-      <li><%= link_to s.title, [@user, s] %></li>
+      <li><%= link_to s.title, [@user, s] %> [<%= link_to "delete", remove_playlist_song_path(song_id: s), :method => :post %>]</li>
     </ol>
   <% end %>
 <% end %>
 
 <h4><%= link_to "Edit Playlist", edit_user_playlist_path(@user, @playlist) %></h4>
-
-<!--
-    # create_table "playlists", force: :cascade do |t|
-    #   t.integer "user_id"
-    #   t.string "name"
-    #   t.string "description"
-    #   t.datetime "created_at", null: false
-    #   t.datetime "updated_at", null: false
-    # end
-
-    # create_table "songs", force: :cascade do |t|
-    #   t.string "song_url"
-    #   t.string "code"
-    #   t.string "title"
-    #   t.string "genre"
-    #   t.string "img"
-    #   t.integer "user_id"
-    #   t.integer "playlist_id"
-    #   t.datetime "created_at", null: false
-    #   t.datetime "updated_at", null: false
-    # end
-
-    # create_table "users", force: :cascade do |t|
-    #   t.string "name"
-    #   t.string "email"
-    #   t.string "password"
-    #   t.string "bio"
-    #   t.string "img"
-    #   t.datetime "created_at", null: false
-    #   t.datetime "updated_at", null: false
-    # end -->

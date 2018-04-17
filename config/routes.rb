@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "/logout", to: "sessions#logout", as: "logout"
 
   post "/users/:user_id/songs/:id/add_song", to: "songs#add_to_playlist", as: "add_playlist_song"
+  post "/users/:user_id/playlists/:id/remove_song", to: "playlists#remove_song", as: "remove_playlist_song"
 
   resources :users do
     resources :songs
