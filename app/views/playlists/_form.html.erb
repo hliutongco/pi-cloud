@@ -1,22 +1,22 @@
-<% if flash[:errors] %>
-  <div class="mid-section alert alert-danger" role="alert">
-    <% flash[:errors].each do |e| %>
-      <%= e %>
-    <% end %>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+<div class= "col-md-6">
+  <% if flash[:errors] %>
+    <div class="mid-section alert alert-danger" role="alert">
+      <% flash[:errors].each do |e| %>
+        <%= e %><br/>
+      <% end %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
 
-<% end %>
+  <% end %>
 
-<%= bootstrap_form_for [@user, @playlist] do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <%= f.submit button_label %>
-<% end %>
+  <%= bootstrap_form_for [@user, @playlist] do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_area :description %>
+    <%= f.submit button_label, class: "btn btn-primary"  %>
+  <% end %>
+</div>
 
 <!--
   create_table "playlists", force: :cascade do |t|
