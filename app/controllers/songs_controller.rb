@@ -7,9 +7,9 @@ class SongsController < ApplicationController
   end
 
   def show
-    # @song_playlist = SongPlaylist.new
+    # byebug
     if logged_in?
-      @user = current_user
+      # puts @user
       @playlists = @user.playlists
       @song_playlist = SongPlaylist.new
     end

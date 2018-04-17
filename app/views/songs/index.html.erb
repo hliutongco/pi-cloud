@@ -2,7 +2,7 @@
   <h1>All Songs</h1>
 
   <% @songs.each do |s| %>
-    <%= link_to "#{s.title} - #{s.user.name}", user_song_path(@user, s) %> <br>
+    <%= link_to "#{s.title} - #{s.user.name}", user_song_path(s.user, s) %> <br>
   <% end %>
 
 </div>
