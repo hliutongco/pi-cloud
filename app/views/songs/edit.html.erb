@@ -1,9 +1,12 @@
 <body id="song-edit" class="full-page">
   <div class="translucent center">
-    <h1>Edit '<%= @song.title %>'</h1>
-    <%= render partial: "form", locals: { button_label: "Edit Song", myclass: "paddingright" } %><br/><br/>
-    <%= form_tag user_song_path(@user, @song), method: 'delete' do %>
-      <%= submit_tag "Delete song", class: "btn btn-primary" %>
-    <% end %>
+    <h1 class ="center-text">Edit '<%= @song.title %>'</h1>
+    <%= render partial: "form", locals: { button_label: "Edit Song" } %><br/>
+    <div class="center-text">
+      <h4>Delete Your Song</h4>
+      <%= form_tag user_song_path(@user, @song), method: 'delete' do %>
+        <%= submit_tag "Delete song", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </body>

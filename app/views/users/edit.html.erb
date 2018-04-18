@@ -1,10 +1,10 @@
 <body id="user-edit" class="full-page">
   <div class="translucent center">
-    <h1>Edit Your Profile</h1>
+    <h1 class="center-text">Edit Your Profile</h1>
 
-    <%= render partial: "form", locals: { button_label: "Update Profile", myclass: "paddingright" } %>
+    <%= render partial: "form", locals: { button_label: "Update Profile" } %>
 
-    <div class='delete'>
+    <div class='delete center-text'>
       <h4>Delete Your Account</h4>
       <%= form_tag user_path(@user), method: 'delete' do %>
         <%= submit_tag 'Delete Account', class: "btn btn-primary" %>
