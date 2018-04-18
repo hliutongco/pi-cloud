@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "users#index"
+  root to: "home#index"
 
   # get "/reset", to: "password_resets#new", as: "prompt_email_reset"
   # get "/reset_password", to: "password_resets#create", as: "reset_password"

@@ -1,5 +1,6 @@
 class Playlist < ApplicationRecord
   validates :name, presence: true
+  validates :mood, presence: true
 
   belongs_to :user
   has_many :song_playlists
@@ -19,5 +20,5 @@ class Playlist < ApplicationRecord
     @playlist << song
   end
 
-  
+
 end

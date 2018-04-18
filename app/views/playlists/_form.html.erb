@@ -10,6 +10,7 @@
 
   <%= bootstrap_form_for [@user, @playlist] do |f| %>
     <%= f.text_field :name %>
+    <%= f.text_field :mood %>
     <%= f.text_area :description %>
     <%= f.submit button_label, class: "btn btn-primary"  %>
   <% end %>
