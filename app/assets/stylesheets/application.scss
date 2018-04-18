@@ -18,8 +18,9 @@
  @import "bootstrap";
 
 * {
-  color: white
+  color: white;
 }
+
  .container {
    left:0;
    right:0;
@@ -40,9 +41,13 @@
  }
 
 .translucent {
-  background-color: #eaeaea;
-  background-color: rgba(0,0,0,0.9);
-  padding-bottom: 1em;
+  // background-color: #000;
+   background-color: rgba(0, 0, 0,0.5  );
+  // padding-bottom: 1em;
+  // opacity: 0.5;
+}
+.translucent-black {
+  background-color: rgba(0, 0, 0,0.5  );
 }
 
 .margins{
@@ -264,7 +269,7 @@
     color:rgba(255,255,255,.65)
 }
 .card-inverse .card-link:focus,.card-inverse .card-link:hover{
-    color:#fff
+    color:#eee
 }
 .card-blockquote{
     padding:0;
@@ -393,4 +398,7 @@
 .spacing-between {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+a {
+  color: #33cccc;
 }
