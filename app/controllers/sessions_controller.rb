@@ -18,11 +18,19 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     redirect_to login_path
   end
-
-  def reset
-    @mail_user = User.find_by(email: params[:email])
-    UserMailer.with(user: @mail_user).reset_email.deliver_now
-  end
+  # 
+  # def reset
+  #   @mail_user = User.find_by(email: params[:email])
+  #   UserMailer.with(user: @mail_user).reset_email.deliver_now
+  # end
+  #
+  # def new_password
+  #   redirect_to
+  # end
+  #
+  # def password_reset_expired?
+  #   reset_sent_at < 2.hours.ago
+  # end
 
 
 end

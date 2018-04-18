@@ -9,8 +9,19 @@
           <div class="mid-section alert alert-danger" role="alert">
             <%= flash[:errors] %>
           </div>
+        <% elsif flash[:info] %>
+          <div class="mid-section alert " role="alert">
+            <%= flash[:info] %>
+          </div>
+        <% elsif flash[:warning] %>
+          <div class="mid-section alert alert-warning" role="alert">
+            <%= flash[:warning] %>
+          </div>
+          <% elsif flash[:success] %>
+            <div class="mid-section alert alert-success" role="alert">
+              <%= flash[:success] %>
+            </div>
         <% end %>
-
 
         <%= bootstrap_form_for sessions_path do |f| %>
           <%= f.text_field "email" %><br>
@@ -20,8 +31,7 @@
 
       </div>
       <br><br>
-      <%= link_to "Forgot Password?", prompt_email_reset_path %>
-
+      <%= link_to "Forgot Password?", new_password_reset_path %>
   </div>
 
 </body>

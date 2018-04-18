@@ -33,7 +33,8 @@ Rails.application.configure do
       password:             'flatironpw',
       authentication:       'plain',
       enable_starttls_auto: true }
-      
+      config.action_mailer.default_url_options = { :host => "test.localhost:3000" }
+
     Paperclip.options[:image_magick_path] = "/opt/ImageMagick/bin"
     Paperclip.options[:command_path] = "/opt/ImageMagick/bin"
   # Raise exceptions instead of rendering exception templates.
