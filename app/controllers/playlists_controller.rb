@@ -41,7 +41,7 @@ class PlaylistsController < ApplicationController
       redirect_to user_playlist_path(@playlist)
     else
       flash[:errors] = @playlist.errors.full_messages
-      redirect_to edit_playlist_path(@user, @playlist)
+      redirect_to edit_user_playlist_path(@user, @playlist)
     end
   end
 
