@@ -10,6 +10,13 @@
         n/a
       <% end %>
     </h4>
+    <h4>Creator:
+      <% if @song.user.name != "" %>
+        <%= link_to @song.user.name, @song.user %>
+      <% else %>
+        n/a
+      <% end %>
+    </h4>
 
     <br/><%= image_tag @song.avatar.url(:medium) %><br/>
 

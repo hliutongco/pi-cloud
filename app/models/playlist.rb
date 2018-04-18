@@ -18,4 +18,6 @@ class Playlist < ApplicationRecord
     song = Song.find(song_id)
     @playlist << song
   end
+
+  
 end
