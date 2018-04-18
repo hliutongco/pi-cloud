@@ -1,17 +1,18 @@
 <body id="login" class="full-page">
   <div class="translucent center">
-  <h1>Login</h1>
-  <% if flash[:errors] %>
-    <h3><% flash[:errors] %></h3>
-  <% end %>
 
-  <%= bootstrap_form_for sessions_path do %>
-    <%= label_tag "Email" %>
-    <%= text_field_tag "email" %><br>
-    <%= label_tag "Password" %>
-    <%= password_field_tag "password" %><br>
+    <h1>Login</h1>
+    <% if flash[:errors] %>
+      <h3><% flash[:errors] %></h3>
+    <% end %>
+    <div class="paddingright">
+      <%= bootstrap_form_for sessions_path do |f| %>
+        <%= f.text_field "email" %><br>
+        <%= f.password_field "password" %><br>
 
-    <%= submit_tag "Login" %>
-  <% end %>
-</div>
+        <%= submit_tag "Login", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
 </body>

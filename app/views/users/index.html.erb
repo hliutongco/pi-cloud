@@ -1,3 +1,18 @@
 <body id="users-index" class="full-page">
-  <h1>This is the Users Index Page</h1>
+  <div class="translucent center">
+    <h1>List of Users</h1>
+  </div>
+  <% @users.each do |u| %>
+    <div class="translucent center container-fluid">
+      <div class="col-md-2">
+        <%= link_to image_tag(u.avatar.url(:thumb)), u %><br>
+      </div>
+      <div class="col-md-10">
+        <%= link_to u do %>
+          <h3><%= u.name %></h3>
+        <% end %>
+        <%= u.bio == "" ? "#{u.name}'s bio n/a." : u.bio %>
+      </div>
+    </div>
+  <% end %>
 </body>

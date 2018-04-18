@@ -9,7 +9,7 @@ class Song < ApplicationRecord
   has_many :song_playlists
   has_many :playlists, through: :song_playlists
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: ":style/missing.png"
   validates_attachment :avatar,
   content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
 end

@@ -1,6 +1,9 @@
 <body id="playlist-edit" class="full-page">
   <div class="translucent center">
     <h1>Edit '<%= @playlist.name %>'</h1>
-    <%= render partial: "form", locals: { button_label: "Edit Playlist", myclass: "paddingright" } %>
+    <%= render partial: "form", locals: { button_label: "Edit Playlist", myclass: "paddingright" } %><br/><br/>
+    <%= form_tag user_playlist_path(@user, @playlist), method: 'delete' do %>
+      <%= submit_tag "Delete Playlist", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </body>
