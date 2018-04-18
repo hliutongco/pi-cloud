@@ -1,11 +1,7 @@
 <body id="user-show" class="full-page">
   <div class="translucent center">
     <h1><%= @user.name %></h1>
-
-    <% if @user.avatar.url != "/images/original/missing.png" %>
-      <%= image_tag @user.avatar.url(:medium) %>
-    <% end %>
-
+    <%= image_tag @user.avatar.url(:medium) %>
 
     <h3>Bio</h3>
 

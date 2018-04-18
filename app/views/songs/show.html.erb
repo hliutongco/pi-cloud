@@ -10,11 +10,7 @@
       <% end %>
     </h4>
 
-    <br>
-
-    <% if @user.avatar.url != "/images/original/missing.png" %>
-      <%= image_tag @song.avatar.url(:medium) %><br>
-    <% end %>
+    <br/><%= image_tag @song.avatar.url(:medium) %><br/>
 
     <audio controls autoplay>
       <source src="<%= @song.url.url %>" type="audio/ogg">
@@ -22,7 +18,7 @@
       Your browser does not support the audio element.
     </audio>
 
-    <br><br>
+    <br/><br/>
 
     <% if logged_in? && @user == current_user %>
         <h5>Add this song to your playlist:</h5>
@@ -33,7 +29,7 @@
           <% end %>
         </div>
     <% end %>
-    <br><br>
+    <br/><br/>
 
     <div class="paddingright">
       <h5>Code</h5>
