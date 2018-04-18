@@ -1,9 +1,9 @@
 class UserMailer < ApplicationMailer
-  default from: 'alicelin723@gmail.com'
+  default from: 'picloud.notifications@gmail.com'
 
   def reset_email
-    mail(to: params[:email], subject: 'Password Reset')
-    # byebug
+    mail(to: params[:user][:email], subject: 'Password Reset')
+
   end
 
 end

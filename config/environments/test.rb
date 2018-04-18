@@ -32,8 +32,8 @@ Rails.application.configure do
       user_name:            'picloud.notifications',
       password:             'flatironpw',
       authentication:       'plain',
-    
       enable_starttls_auto: true }
+      
     Paperclip.options[:image_magick_path] = "/opt/ImageMagick/bin"
     Paperclip.options[:command_path] = "/opt/ImageMagick/bin"
   # Raise exceptions instead of rendering exception templates.
