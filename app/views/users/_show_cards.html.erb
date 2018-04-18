@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid row">
   <% @songs.each_slice(3) do |arr|%>
-    <div class="card-deck py-2 ">
+    <div class="card-deck py-2 spacing-between">
         <% arr.each do |s|%>
             <div class="card h-100">
               <%= image_tag s.avatar.url(:thumb), class: "card-img-top" %>
