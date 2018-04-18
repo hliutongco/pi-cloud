@@ -17,7 +17,9 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-
+* {
+  color: white
+}
  .container {
    left:0;
    right:0;
@@ -39,7 +41,7 @@
 
 .translucent {
   background-color: #eaeaea;
-  background-color: rgba(234,234,234,1.0);
+  background-color: rgba(0,0,0,0.9);
   padding-bottom: 1em;
 }
 
@@ -140,7 +142,7 @@
   background-size: cover;
 }
 #songs-index {
- background: url("control.jpg") no-repeat fixed;
+ background: url("DM.png") no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
