@@ -1,0 +1,16 @@
+<body id="playlists-index" class="full-page">
+  <div class="translucent center">
+    <h1 class="center-text">Welcome to PiCloud!</h1>
+    <p>Share your SonicPi creations with the world. Upload your creations or browse the works of other artists like yourself. To get started, create an account or login below.</p>
+    <br/><br/>
+    <div class="flex">
+      <%= form_tag login_path, method: 'get' do %>
+        <%= submit_tag "Log In", class: "btn btn-primary" %>
+      <% end %>
+      &emsp;
+      <%= form_tag signup_path, method: 'get' do %>
+        <%= submit_tag "Sign Up", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</body>
