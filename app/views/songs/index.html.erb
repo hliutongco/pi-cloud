@@ -2,8 +2,6 @@
   <div class="translucent center">
       <h1>All Songs</h1>
 
-      <% @songs.each do |s| %>
-        <%= link_to "#{s.title} - #{s.user.name}", user_song_path(s.user, s) %> <br>
-      <% end %>
+    <%= render partial: "layouts/show_cards" %>
   </div>
 </body>

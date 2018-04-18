@@ -165,7 +165,7 @@
     position:relative;
     display:block;
     margin-bottom:.75rem;
-    background-color:#fff;
+
     border:1px solid #e5e5e5;
     border-radius:.25rem;
 
@@ -299,7 +299,8 @@
         display:table-cell;
         width:20rem;
         text-align: center;
-        background-color: #eee;//rgba(255, 255, 255,0.8);
+        background-color:rgba(255, 255, 255,0.8);
+        //  #dcdcdc  ;
     }
     .card-deck-wrapper{
         margin-right:-1.25rem;
