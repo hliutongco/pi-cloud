@@ -1,17 +1,25 @@
-<div class="container-fluid row">
+<body class="row center">
   <% @songs.each_slice(3) do |arr|%>
-    <div class="card-deck py-2 spacing-between">
-        <% arr.each do |s|%>
-            <div class="card h-100">
-              <%= image_tag s.avatar.url(:thumb), class: "card-img-top" %>
-              <div class="card-body">
-                <h5 class="card-title"><%= s.title %></h5>
-                <p class="card-text">Genre: <%= s.genre == "" ? "n/a": s.genre %></p>
-                <p class="card-text"><small class="text-muted">Last updated on <%= s.updated_at.to_date %></small></p>
-              </div>
-            </div>
-        <% end %>
+    <div class="card-deck spacing-between">
+
+      <% arr.each do |s|%>
+
+        <div class="card h-100 center-text">
+
+          <%= link_to [s.user, s] do %>
+            <%= image_tag s.avatar.url(:thumb), class: "card-img-top" %>
+          <% end %>
+          <div class="card-body">
+            <%= link_to [s.user, s] do %>
+              <h5 class="card-title"><%= s.title %></h5>
+            <% end %>
+            <p class="card-text">Genre: <%= s.genre == "" ? "n/a": s.genre %></p>
+            <p class="card-text"> <small class="text-muted">Last updated on <%= s.updated_at.to_date %></small></p>
+          </div>
+        </div>
+
+      <% end %>
+
     </div>
   <% end %>
-
-</div>
+</body>

@@ -42,12 +42,9 @@
 
 .translucent {
   // background-color: #000;
-   background-color: rgba(0, 0, 0,0.5  );
+   background-color: rgba(0, 0, 0,0.5);
   // padding-bottom: 1em;
   // opacity: 0.5;
-}
-.translucent-black {
-  background-color: rgba(0, 0, 0,0.5  );
 }
 
 .margins{
@@ -63,13 +60,11 @@
   background-size: cover;
 }
 
-
 .full-page {
-  overflow: auto;
   width:100%;
   height:100%;
-  margin:0;
-  padding:0;
+  max-width:100%;
+  max-height:100%;
 }
 
 #user-show {
@@ -166,13 +161,14 @@
 
 
  // BOOTSTRAP CARDS css
- .card{
+ .card {
     position:relative;
     display:block;
     margin-bottom:.75rem;
     background-color:#fff;
     border:1px solid #e5e5e5;
-    border-radius:.25rem
+    border-radius:.25rem;
+
 }
 .card-block{
     padding:1.25rem
@@ -301,8 +297,9 @@
     }
     .card-deck .card{
         display:table-cell;
-        width:1%;
-        vertical-align:top
+        width:20rem;
+        text-align: center;
+        background-color: #eee;//rgba(255, 255, 255,0.8);
     }
     .card-deck-wrapper{
         margin-right:-1.25rem;
@@ -379,12 +376,8 @@
   .center {
      width: 60%;
      height: 100%;
-     margin: auto;
-     padding-left: 60px;
-     padding-top: 10px;
-     padding-bottom: 10px;
-     margin-top: 2em;
-     margin-bottom: 2em;
+     margin: 2em auto;
+    padding: 1em 2em ;
    }
 
  .center-text {
@@ -401,4 +394,8 @@
 }
 a {
   color: #33cccc;
+}
+
+a:hover {
+  color: #248f8f;
 }
