@@ -1,4 +1,4 @@
-
+<div class="offer <%= myclass %>">
   <% if flash[:errors] %>
     <div class="mid-section alert alert-danger" role="alert">
       <% flash[:errors].each do |e| %>
@@ -13,3 +13,4 @@
     <%= f.text_area :description %>
     <%= f.submit button_label, class: "btn btn-primary"  %>
   <% end %>
+</div>

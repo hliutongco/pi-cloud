@@ -1,4 +1,4 @@
-
+<div class="offer <%= myclass %>">
   <% if flash[:errors] %>
 
     <div class="mid-section alert alert-danger" role="alert">
@@ -18,3 +18,4 @@
     <%= f.hidden_field :user_id, :value => @song.user_id %>
     <%= f.submit button_label, class: "btn btn-primary" %>
   <% end %>
+</div>
