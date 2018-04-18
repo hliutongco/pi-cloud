@@ -385,10 +385,6 @@
    text-align: center;
  }
 
-.paddingright {
-  padding-right: 60px;
-}
-
 .spacing-between {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -399,4 +395,8 @@ a {
 
 a:hover {
   color: #248f8f;
+}
+
+#playlist-width {
+  width: 300px;
 }

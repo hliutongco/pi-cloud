@@ -1,4 +1,4 @@
-<div id="song-show" class="full-page">
+<body id="song-show" class="full-page">
   <div class="translucent center">
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=ruby;skin=desert"></script>
     <h1>Title: <%= @song.title %></h1>
@@ -22,7 +22,7 @@
 
     <% if logged_in? && @user == current_user %>
         <h5>Add this song to your playlist:</h5>
-        <div class="paddingright">
+        <div id="playlist-width">
           <%= bootstrap_form_for @song_playlist, url: add_playlist_song_path do |f| %>
             <%= f.collection_select :playlist_id, @playlists, :id, :name, hide_label: true, :prompt => 'Select Playlist' %>
             <%= f.submit "Add Song", class: "btn btn-primary" %>
@@ -31,13 +31,11 @@
     <% end %>
     <br/><br/>
 
-    <div class="paddingright">
       <h5>Code</h5>
       <pre class="prettyprint">
 <!-- This needs to be left-aligned -->
 <%= @song.code %>
       </pre>
-    </div>
 
     <% if logged_in? && @user == current_user %>
       <h4><%= link_to "Edit Song", edit_user_song_path(@user, @song) %></h4>
