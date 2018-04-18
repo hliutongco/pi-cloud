@@ -9,6 +9,14 @@
       <% end %>
     </h4>
 
+    <h4>Mood:
+      <% if @playlist.mood != "" %>
+        <%= @playlist.mood %>
+      <% else %>
+        n/a
+      <% end %>
+    </h4>
+
       <%= @playlist.description %>
 
     <br><br>
