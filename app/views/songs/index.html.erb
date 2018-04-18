@@ -1,10 +1,9 @@
-<div class="col-md-8 translucent center">
-  <body id="song-index">
-    <h1>All Songs</h1>
+<body id="songs-index" class="full-page">
+  <div class="translucent center">
+      <h1>All Songs</h1>
 
-    <% @songs.each do |s| %>
-      <%= link_to "#{s.title} - #{s.user.name}", user_song_path(@user, s) %> <br>
-    <% end %>
-
-  </body>
-</div>
+      <% @songs.each do |s| %>
+        <%= link_to "#{s.title} - #{s.user.name}", user_song_path(@user, s) %> <br>
+      <% end %>
+  </div>
+</body>

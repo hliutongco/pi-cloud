@@ -1,5 +1,5 @@
-<div id="user-show">
-  <div class="col-md-6 translucent center">
+<body id="user-show" class="full-page">
+  <div class="translucent center">
     <h1><%= @user.name %></h1>
 
     <% if @user.avatar.url != "/images/original/missing.png" %>
@@ -30,4 +30,4 @@
       <h4><%= link_to "Edit Account", edit_user_path(@user) %> | <%= link_to "Add Song", new_user_song_path(:user_id => @user.id)%> | <%= link_to "Add Playlist", new_user_playlist_path(:user_id => @user.id) %></h4>
     <% end %>
   </div>
-</div>
+</body>
