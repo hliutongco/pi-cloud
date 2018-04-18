@@ -3,9 +3,21 @@
     <h1>List of Users</h1>
   </div>
   <% @users.each do |u| %>
-    <div class="translucent center">
-      <%= link_to image_tag(u.avatar.url(:thumb)), u %><br>
-      <%= link_to u.name, u %>
-    </div>
+    <% if current_user.id != u.id %>
+      <div class="translucent center">
+        <%= link_to image_tag(u.avatar.url(:thumb)), u %><br>
+        <h4><%= link_to u.name, u %></h4>
+        <% if !current_user.following?(u) %>
+          <%= form_for(current_user.active_relationships.build) do |f| %>
+            <div><%= hidden_field_tag :followed_id, u.id %></div>
+            <%= f.submit "Follow", class: "btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <%= form_for(current_user.active_relationships.find_by(followed_id: u.id), html: { method: :delete }) do |f| %>
+            <%= f.submit "Unfollow", class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </body>

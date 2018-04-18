@@ -14,4 +14,10 @@ Rails.application.routes.draw do
     resources :playlists
   end
 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
 end

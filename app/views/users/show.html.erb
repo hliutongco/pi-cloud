@@ -2,6 +2,8 @@
   <div class="translucent center">
     <h1><%= @user.name %></h1>
     <%= image_tag @user.avatar.url(:medium) %>
+    <br><br>
+      <%= render "/components/follow_button" %>
 
     <h3>Bio</h3>
 
