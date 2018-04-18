@@ -31,4 +31,24 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def self.sort_by_followers
+    self.all.sort_by {|u| u.followers.count}.reverse
+  end
+
+  def self.featured
+    self.sort_by_followers.first
+  end
+
+  def self.popular
+    index = 1
+    popular = []
+    users = self.sort_by_followers
+    while (users[index] && index < 4)
+      popular << users[index]
+      index += 1
+    end
+    popular
+  end
+
 end
