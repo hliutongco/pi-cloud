@@ -3,16 +3,21 @@
 
     <h1>Login</h1>
     <% if flash[:errors] %>
-      <h3><% flash[:errors] %></h3>
+      <div class="mid-section alert alert-danger" role="alert">
+        <h3><% flash[:errors] %></h3>
+      </div>
     <% end %>
-    <div class="paddingright">
-      <%= bootstrap_form_for sessions_path do |f| %>
-        <%= f.text_field "email" %><br>
-        <%= f.password_field "password" %><br>
 
-        <%= submit_tag "Login", class: "btn btn-primary" %>
-      <% end %>
-    </div>
+      <div class="paddingright">
+        <%= bootstrap_form_for sessions_path do |f| %>
+          <%= f.text_field "email" %><br>
+          <%= f.password_field "password" %><br>
+          <%= submit_tag "Login", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <br><br>
+      <%= link_to "Forgot Password?", prompt_email_reset_path %>
+
   </div>
 
 </body>

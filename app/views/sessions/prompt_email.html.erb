@@ -1,0 +1,11 @@
+<body id="user-edit" class="full-page">
+  <div class="translucent center">
+    <h1>Reset Password</h1>
+    
+    <%= bootstrap_form_tag url: '/reset_password', method: "get" do |f| %>
+      <%= f.email_field :email %><br>
+      <%= f.submit "Reset Password", class: "btn btn-primary" %>
+    <% end %>
+
+
+</body>

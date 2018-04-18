@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by(email: params[:email])
@@ -9,7 +7,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user
     else
-      flash[:errors] = "Invalid credentials"
+      flash[:errors] = 'Invalid credentials'
       redirect_to login_path
     end
   end
@@ -18,5 +16,13 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     redirect_to login_path
   end
+
+  def reset
+    # byebug
+    # @mail_user = User.find_by(email: params[:email])
+
+    UserMailer.with(email: params[:email]).reset_email.deliver_now
+  end
+
 
 end
