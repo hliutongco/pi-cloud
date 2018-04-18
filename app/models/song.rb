@@ -4,6 +4,7 @@ class Song < ApplicationRecord
   validates :title, presence: true
   validates :url, presence: true
   validates :code, presence: true
+  validates :genre, presence: true
 
   belongs_to :user
   has_many :song_playlists
