@@ -3,7 +3,7 @@ class PlaylistsController < ApplicationController
   before_action :set_user#, only: [:show, :edit, :destroy, :update, :index]
 
   def index
-    @playlists = @user.playlists
+    @playlists = Playlist.all
   end
 
   def show
