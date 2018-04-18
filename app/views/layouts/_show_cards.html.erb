@@ -12,7 +12,9 @@
           <div class="card-body">
             <%= link_to [s.user, s] do %>
               <h5 class="card-title"><%= s.title %></h5>
-            <% end %>
+              <% end %>
+              <p class="card-title"><%= link_to s.user.name, s.user %></p> 
+
             <p class="card-text">Genre: <%= s.genre == "" ? "n/a": s.genre %></p>
             <p class="card-text"> <small class="text-muted">Last updated on <%= s.updated_at.to_date %></small></p>
           </div>

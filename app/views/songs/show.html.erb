@@ -2,6 +2,7 @@
   <div class="translucent center">
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=ruby;skin=desert"></script>
     <h1>Title: <%= @song.title %></h1>
+    <h5>By: <%= link_to @song.user.name, @song.user %></h5><br>
     <h4>Genre:
       <% if @song.genre != "" %>
         <%= @song.genre %>
@@ -20,11 +21,11 @@
 
     <br/><br/>
 
-    <% if logged_in? && @user == current_user %>
+    <% if logged_in? %>
         <h5>Add this song to your playlist:</h5>
         <div id="playlist-width">
-          <%= bootstrap_form_for @song_playlist, url: add_playlist_song_path do |f| %>
-            <%= f.collection_select :playlist_id, @playlists, :id, :name, hide_label: true, :prompt => 'Select Playlist' %>
+          <%= bootstrap_form_for @song_playlist, url: add_playlist_song_path(current_user) do |f| %>
+            <%= f.collection_select :playlist_id, current_user.playlists, :id, :name, hide_label: true, :prompt => 'Select Playlist' %>
             <%= f.submit "Add Song", class: "btn btn-primary" %>
           <% end %>
         </div>
