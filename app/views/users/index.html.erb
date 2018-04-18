@@ -1,5 +1,7 @@
 <body id="users-index" class="full-page">
-  <h1 class="translucent center">This is the Users Index Page</h1>
+  <div class="translucent center">
+    <h1>List of Users</h1>
+  </div>
   <% @users.each do |u| %>
     <div class="translucent center">
       <%= link_to image_tag(u.avatar.url(:thumb)), u %><br>
