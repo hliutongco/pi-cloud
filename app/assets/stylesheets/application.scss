@@ -18,8 +18,9 @@
  @import "bootstrap";
 
 * {
-  color: white
+  color: white;
 }
+
  .container {
    left:0;
    right:0;
@@ -40,9 +41,13 @@
  }
 
 .translucent {
-  background-color: #eaeaea;
-  background-color: rgba(0,0,0,0.9);
-  padding-bottom: 1em;
+  // background-color: #000;
+   background-color: rgba(0, 0, 0,0.5  );
+  // padding-bottom: 1em;
+  // opacity: 0.5;
+}
+.translucent-black {
+  background-color: rgba(0, 0, 0,0.5  );
 }
 
 .margins{
@@ -264,7 +269,7 @@
     color:rgba(255,255,255,.65)
 }
 .card-inverse .card-link:focus,.card-inverse .card-link:hover{
-    color:#fff
+    color:#eee
 }
 .card-blockquote{
     padding:0;
@@ -360,6 +365,14 @@
     }
 }
 
+
+
+.card-title, .card-text {
+  color: black;
+}
+
+// END OF CARD BOOTSTRAP CSS
+
   .navbar { margin-bottom: 0 }
 
 
@@ -382,6 +395,7 @@
   padding-right: 60px;
 }
 
+<<<<<<< HEAD
 .dropdown {
   color: #fff;
   background-color: #337ab7;
@@ -393,4 +407,12 @@
   font-size: 14px;
   line-height: 1.428571429;
   border-radius: 4px;
+=======
+.spacing-between {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+a {
+  color: #33cccc;
+>>>>>>> 13a5c3721090424f7b4b6b27e789071f346c65a7
 }
