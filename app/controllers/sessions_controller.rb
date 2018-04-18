@@ -2,8 +2,10 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
+    credentials = params["/login"]
+    user = User.find_by(email: credentials[:email])
+    byebug
+    if user && user.authenticate(credentials[:password])
       session[:user_id] = user.id
       redirect_to user
     else
@@ -18,9 +20,6 @@ class SessionsController < ApplicationController
   end
 
   def reset
-    # byebug
-    # @mail_user = User.find_by(email: params[:email])
-
     UserMailer.with(email: params[:email]).reset_email.deliver_now
   end
 
