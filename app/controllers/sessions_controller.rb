@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   def create
     credentials = params["/login"]
     user = User.find_by(email: credentials[:email])
-    byebug
     if user && user.authenticate(credentials[:password])
       session[:user_id] = user.id
       redirect_to user
