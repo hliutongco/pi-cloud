@@ -15,16 +15,18 @@
           <% end %>
           <%= u.bio == "" ? "#{u.name}'s bio n/a." : u.bio %>
         </div>
-        <% if !current_user.following?(u) %>
-          <%= form_for(current_user.active_relationships.build) do |f| %>
-            <div><%= hidden_field_tag :followed_id, u.id %></div>
-            <%= f.submit "Follow", class: "btn btn-primary" %>
+        <div class="col-md-10">
+          <% if !current_user.following?(u) %>
+            <%= form_for(current_user.active_relationships.build) do |f| %>
+              <%= hidden_field_tag :followed_id, u.id %>
+              <%= f.submit "Follow", class: "btn btn-primary" %>
+            <% end %>
+          <% else %>
+            <%= form_for(current_user.active_relationships.find_by(followed_id: u.id), html: { method: :delete }) do |f| %>
+              <%= f.submit "Unfollow", class: "btn btn-primary" %>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= form_for(current_user.active_relationships.find_by(followed_id: u.id), html: { method: :delete }) do |f| %>
-            <%= f.submit "Unfollow", class: "btn btn-primary" %>
-          <% end %>
-        <% end %>
+        </div>
       </div>
     <% end %>
 
