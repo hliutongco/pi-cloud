@@ -3,7 +3,7 @@
     <h1>Edit '<%= @song.title %>'</h1>
     <%= render partial: "form", locals: { button_label: "Edit Song", myclass: "paddingright" } %><br><br>
     <%= form_tag user_song_path(@user, @song), method: 'delete' do %>
-      <%= submit_tag "Delete song"%>
+      <%= submit_tag "Delete song", class: "btn btn-primary" %>
     <% end %>
   </div>
 </body>

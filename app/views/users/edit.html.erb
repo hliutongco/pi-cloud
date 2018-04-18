@@ -7,7 +7,7 @@
     <div class='delete'>
       <h4>Delete Your Account</h4>
       <%= form_tag user_path(@user), method: 'delete' do %>
-        <%= submit_tag 'Delete Account' %>
+        <%= submit_tag 'Delete Account', class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
