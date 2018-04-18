@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def reset
-    @mail_user = User.find(params[:id])
+    @mail_user = User.find_by(email: params[:email])
     UserMailer.with(user: @user).reset_email.deliver_now
   end
 
