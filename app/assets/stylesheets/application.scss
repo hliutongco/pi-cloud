@@ -102,7 +102,20 @@
   -o-background-size: cover;
   background-size: cover;
 }
-
+#user-followers {
+ background: url("yuh.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#user-following {
+ background: url("drip.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 #playlist-show {
  background: url("collection.jpg") no-repeat fixed;
@@ -411,5 +424,7 @@ a:hover {
  .flex {
    justify-content: center;
    display: flex;
-
+ }
+ .flex-left {
+   display: flex;
  }

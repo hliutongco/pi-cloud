@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: "login"
   post "/login", to: "sessions#create", as: "sessions"
   post "/logout", to: "sessions#logout", as: "logout"
+  get "/users/:id/followers" => "users#followers"
+  get "/users/:id/following" => "users#following"
 
   post "/users/:user_id/songs/:id/add_song", to: "songs#add_to_playlist", as: "add_playlist_song"
   post "/users/:user_id/playlists/:id/remove_song", to: "playlists#remove_song", as: "remove_playlist_song"

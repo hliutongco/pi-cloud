@@ -3,7 +3,17 @@
     <h1><%= @user.name %></h1>
     <%= image_tag @user.avatar.url(:medium) %>
     <br><br>
+    <div class="flex-left">
+      <%= form_tag following_user_path(@user), method: 'get' do %>
+        <%= submit_tag "Following: #{@user.following.count}", class: "btn btn-primary" %>
+      <% end %>
+      &emsp;
+      <%= form_tag followers_user_path(@user), method: 'get' do %>
+        <%= submit_tag "Followers: #{@user.followers.count}", class: "btn btn-primary" %>
+      <% end %>
+      &emsp;
       <%= render "/components/follow_button" %>
+    </div>
 
     <h3>Bio</h3>
 

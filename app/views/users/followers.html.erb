@@ -1,0 +1,32 @@
+<body id="user-followers" class="full-page">
+  <div class="translucent center">
+    <h1><%= @user.name %>s' Followers</h1>
+    <%= link_to "Back to #{@user.name}", @user %>
+  </div>
+  <% @user.followers.each do |u| %>
+    <div class="translucent center container-fluid">
+      <div class="col-md-2">
+        <%= link_to image_tag(u.avatar.url(:thumb)), u %>
+        <br/><br/>
+        <div class="center-text">
+          <% if !current_user.following?(u) %>
+            <%= form_for(current_user.active_relationships.build) do |f| %>
+              <%= hidden_field_tag :followed_id, u.id %>
+              <%= f.submit "Follow", class: "btn btn-primary" %>
+            <% end %>
+          <% else %>
+            <%= form_for(current_user.active_relationships.find_by(followed_id: u.id), html: { method: :delete }) do |f| %>
+              <%= f.submit "Unfollow", class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <%= link_to u do %>
+          <h3><%= u.name %></h3>
+        <% end %>
+        <%= u.bio == "" ? "#{u.name}'s bio n/a." : u.bio %>
+      </div>
+    </div>
+  <% end %>
+</body>

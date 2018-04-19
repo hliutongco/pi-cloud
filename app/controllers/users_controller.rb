@@ -10,6 +10,14 @@ class UsersController < ApplicationController
     @songs = @user.songs
   end
 
+  def following
+    @user = User.find(params[:id])
+  end
+
+  def followers
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
   end
