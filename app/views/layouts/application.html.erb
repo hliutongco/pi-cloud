@@ -13,7 +13,7 @@
     <nav class="navbar translucent">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="<%= root_path %>"><strong>PiCloud</strong></a>
+          <a class="navbar-brand" href="<%= users_feed_path %>"><strong>PiCloud</strong></a>
         </div>
         <ul class="nav navbar-nav">
             <% if logged_in? %>
@@ -22,6 +22,13 @@
               <li><a href="<%= login_path %>">Your Profile</a></li>
             <% end %>
 
+            <li>
+              <% if logged_in? %>
+                <a href="<%= users_path %>">Artists</a>
+              <% else %>
+                <a href="<%= login_path %>">Artists</a>
+              <% end %>
+            </li>
           <li>
             <% if logged_in? %>
               <a href="<%= user_songs_path(current_user) %>">Songs</a>
