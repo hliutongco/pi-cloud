@@ -67,6 +67,14 @@
   max-height:100%;
 }
 
+#feed {
+ background: url("rig.jpg") no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 #user-show {
  background: url("tropicaleo.jpg") no-repeat fixed;
   -webkit-background-size: cover;
