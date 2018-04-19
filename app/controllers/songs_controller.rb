@@ -7,10 +7,14 @@ class SongsController < ApplicationController
   end
 
   def show
-    # byebug
     if logged_in?
       @playlists = @user.playlists
       @song_playlist = SongPlaylist.new
+      @song_comment = SongComment.new
+      @comments = SongComment.all
+      if @comments
+        @comments = SongComment.all.select {|c| c.song_id == @song.id}
+      end
     end
   end
 
