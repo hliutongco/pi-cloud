@@ -432,7 +432,25 @@ a:hover {
  .flex {
    justify-content: center;
    display: flex;
+   flex-wrap: wrap;
  }
  .flex-left {
    display: flex;
+ }
+
+ .margins {
+   margin: 1em;
+ }
+
+ .vertical-margins {
+   margin: 1em 0;
+ }
+
+ .padding {
+   padding: 1em;
+ }
+
+ .width-350 {
+   width: 350px;
+   max-width: 350px;
  }
