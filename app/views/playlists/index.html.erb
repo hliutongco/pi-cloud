@@ -1,10 +1,10 @@
 <body id="playlists-index" class="full-page">
   <div class="translucent center">
 
-    <h1>All Playlists</h1>
+    <h1 class="center-text">All Playlists</h1>
 
     <%= form_tag(user_playlists_path(@user), :method => "get", id: "search-form") do %>
-      <div class="black">
+      <div class="black center-text">
         <%= text_field_tag :search, params[:search], placeholder: "Search by Mood" %> &emsp;
         <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
       </div>

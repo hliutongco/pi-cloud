@@ -1,13 +1,12 @@
 <body id="user-show" class="full-page">
-
   <!-- this part is just for Logged in user
   not for other users viewing the page -->
 
   <% if logged_in? && @user == current_user %>
-    <div class="center-text" id="main-menu">
+    <div class="center-text menu">
       <a href="<%= edit_user_path(@user) %>"><div class="translucent col-md-4"><h4>Edit Account</h4></div></a>
-      <a href="<%= new_user_song_path(:user_id => @user.id) %>"><div class="translucent col-md-4"><h4>Add Song</h4></div></a>
-      <a href="<%= new_user_playlist_path(:user_id => @user.id) %>"><div class="translucent col-md-4"><h4>Add Playlist</h4></div></a>
+      <a href="<%= new_user_song_path(:user_id => @user.id) %>"><div class="translucent col-md-4 border-left"><h4>Add Song</h4></div></a>
+      <a href="<%= new_user_playlist_path(:user_id => @user.id) %>"><div class="translucent col-md-4 border-left"><h4>Add Playlist</h4></div></a>
     </div>
   <% end %>
 

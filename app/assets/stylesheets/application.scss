@@ -466,18 +466,28 @@ a:hover {
  }
 
 
-#main-menu div {
-  background-color: rgba(142, 88, 157, 0.7);
+.menu div {
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin-bottom: 20px;
+  border-top: 1px solid white;
  }
 
-#main-menu div:hover {
+ .border-left {
+  border-left: 1px solid white;
+ }
+
+.menu div:hover {
   background-color: rgba(255, 255, 255,0.8);
  }
 
- #main-menu h4 {
+ .menu h4 {
    text-decoration: none;
    color: #33cccc;
+ }
+
+ #song-menu div {
+     border: 1px solid white;
  }
 
  #song-menu div:hover {
@@ -485,6 +495,19 @@ a:hover {
  }
 
  #song-menu h4 {
+   text-decoration: none;
+   color: #33cccc;
+ }
+
+ #playlist-menu div {
+     border: 1px solid white;
+ }
+
+ #playlist-menu div:hover {
+    background-color: rgba(255, 255, 255,0.8);
+ }
+
+ #playlist-menu h4 {
    text-decoration: none;
    color: #33cccc;
  }

@@ -50,13 +50,13 @@
   </div>
 
   <% if logged_in? && @user == current_user %>
-  <div id="song-menu">
-    <a href= <%= edit_user_song_path(@user, @song) %> >
-      <div class="translucent center center-text">
-        <h4>Edit Song</h4>
-      </div>
-    </a>
-  </div>
+    <div id="song-menu">
+      <a href= <%= edit_user_song_path(@user, @song) %> >
+        <div class="translucent center center-text">
+          <h4>Edit Song</h4>
+        </div>
+      </a>
+    </div>
   <% end %>
 
   <div class="translucent center">

@@ -1,47 +1,74 @@
 <body id="playlist-show" class="full-page">
   <div class="translucent center">
-    <h1><%= @playlist.user.name %>'s '<%= @playlist.name %>'</h1>
-    <h4>Creator:
-      <% if @playlist.user.name != "" %>
-        <%= link_to @playlist.user.name, @playlist.user %>
-      <% else %>
-        n/a
-      <% end %>
-    </h4>
 
-    <h4>Mood:
-      <% if @playlist.mood != "" %>
-        <%= @playlist.mood %>
-      <% else %>
-        n/a
-      <% end %>
-    </h4>
-
-      <%= @playlist.description %>
-
-    <br><br>
-    <% if @playlist.songs.empty? %>
-      <p>There are currently no songs. </p>
-    <% else %>
-      <ol>
-        <% @playlist.songs.each do |s| %>
-            <li>
-              <%= link_to s.title, [@user, s] %>
-              <% if logged_in? && @playlist.user == current_user %>
-                [<%= link_to "delete", remove_playlist_song_path(song_id: s), :method => :post %>]
-              <% end %>
-            </li>
+    <div>
+      <h1 class="center-text"><%= @playlist.user.name %>'s '<%= @playlist.name %>'</h1>
+      <h4 class="center-text">Creator:
+        <% if @playlist.user.name != "" %>
+          <%= link_to @playlist.user.name, @playlist.user %>
+        <% else %>
+          n/a
         <% end %>
-      </ol>
-    <% end %>
-    <br>
-    <% if logged_in? && @playlist.user == current_user %>
-      <div class="row container-fluid center-text">
-        <h4><%= link_to "Edit Playlist", edit_user_playlist_path(@playlist.user, @playlist) %></h4>
+      </h4>
+
+      <h4 class="center-text">Mood:
+        <% if @playlist.mood != "" %>
+          <%= @playlist.mood %>
+        <% else %>
+          n/a
+        <% end %>
+      </h4>
+
+      <p class="center-text"><%= @playlist.description %></p>
+    </div>
+
+    <div class="flex">
+      <% if @playlist.songs.empty? %>
+        <p>There are currently no songs. </p>
+
+      <% else %>
+
+        <% @playlist.songs.each do |s| %>
+          <div class="translucent margins center-text padding">
+          <h3><%= link_to s.title, user_song_path(s.user, s) %></h3>
+          <%= link_to (image_tag s.avatar.url(:thumb)), user_song_path(s.user, s) %>
+          <br><br>
+          <audio controls>
+            <source src="<%= s.url.url %>" type="audio/ogg">
+            <source src="<%= s.url.url %>" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <h5>By: <%= link_to s.user.name, s.user %></h5>
+          <h5>Genre:
+            <% if s.genre != "" %>
+              <%= s.genre %>
+            <% else %>
+              n/a
+            <% end %>
+          </h5>
+            <% if logged_in? && @playlist.user == current_user %>
+              [<%= link_to "delete", remove_playlist_song_path(song_id: s), :method => :post %>]
+            <% end %>
+          </div>
+        <% end %>
+
+      <% end %>
+    </div>
+
+</div>
+
+
+<% if logged_in? && @playlist.user == current_user %>
+  <div id="playlist-menu">
+    <a href= <%= edit_user_playlist_path(@playlist.user, @playlist) %> >
+      <div class="translucent center center-text">
+        <h4>Edit Playlist</h4>
       </div>
-    <% end %>
-    <br>
+    </a>
   </div>
+<% end %>
+
+
   <div class="translucent center">
     <h4>Add a Comment</h4>
     <%= bootstrap_form_for [@user, @playlist, @playlist_comment] do |f| %>
