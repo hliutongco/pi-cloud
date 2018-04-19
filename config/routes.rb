@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
 
   resources :users do
-    resources :songs
+    resources :songs do
+      resources :song_comments
+    end
     resources :playlists
   end
 

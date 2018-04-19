@@ -7,6 +7,7 @@ class Song < ApplicationRecord
   validates :genre, presence: true
 
   belongs_to :user
+  has_many :song_comments
   has_many :song_playlists
   has_many :playlists, through: :song_playlists
 
