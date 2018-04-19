@@ -75,6 +75,11 @@
               <h5><%= c.content %></h5>
             </div>
           </div>
+            <% if logged_in? && c.user == current_user %>
+              <%= form_tag user_song_song_comment_path(@user, @song, c, c.content), method: 'delete' do %>
+                <%= submit_tag 'Delete Comment', class: "btn-xs btn-primary" %>
+              <% end %>
+            <% end %>
           <br>
         <% end %>
       <% end %>

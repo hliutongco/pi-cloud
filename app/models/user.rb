@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates_length_of :bio, :minimum => 0, :maximum => 500, :allow_blank => true
 
   has_many :song_comments
+  has_many :playlist_comments
   has_many :songs, dependent: :delete_all
   has_many :playlists, dependent: :delete_all
 

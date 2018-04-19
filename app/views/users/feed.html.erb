@@ -20,8 +20,8 @@
 
   <div class="translucent center center-text">
     <h1>Featured Song</h1>
-    <h3><%= link_to @song.title, user_songs_path(@song) %></h3>
-    <%= link_to (image_tag @song.avatar.url(:medium)), user_songs_path(@song) %>
+    <h3><%= link_to @song.title, user_song_path(@song.user, @song) %></h3>
+    <%= link_to (image_tag @song.avatar.url(:medium)), user_song_path(@song.user, @song) %>
     <br><br>
     <audio controls>
       <source src="<%= @song.url.url %>" type="audio/ogg">
@@ -68,8 +68,8 @@
     <div class="flex">
       <% @songs.each do |s| %>
         <div class="translucent padding margins">
-          <h3><%= link_to s.title, user_songs_path(s) %></h3>
-          <%= link_to (image_tag s.avatar.url(:thumb)), user_songs_path(s) %>
+          <h3><%= link_to s.title, user_song_path(s.user, s) %></h3>
+          <%= link_to (image_tag s.avatar.url(:thumb)), user_song_path(s.user, s) %>
           <br><br>
           <audio controls>
             <source src="<%= @song.url.url %>" type="audio/ogg">
