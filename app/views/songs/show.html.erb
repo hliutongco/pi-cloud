@@ -1,57 +1,64 @@
 <body id="feed" class="full-page">
+
   <div class="translucent center">
+
+    <div>
+      <h1 class="center-text">Title: <%= @song.title %></h1>
+      <h5 class="center-text">By: <%= link_to @song.user.name, @song.user %></h5>
+      <h4 class="center-text">Genre:
+        <% if @song.genre != "" %>
+          <%= @song.genre %>
+        <% else %>
+          n/a
+        <% end %>
+      </h4>
+    </div>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=ruby;skin=desert"></script>
-    <h1>Title: <%= @song.title %></h1>
-    <h5>By: <%= link_to @song.user.name, @song.user %></h5><br>
-    <h4>Genre:
-      <% if @song.genre != "" %>
-        <%= @song.genre %>
-      <% else %>
-        n/a
-      <% end %>
-    </h4>
-    <h4>Creator:
-      <% if @song.user.name != "" %>
-        <%= link_to @song.user.name, @song.user %>
-      <% else %>
-        n/a
-      <% end %>
-    </h4>
 
-    <br/><%= image_tag @song.avatar.url(:medium) %><br/>
+    <div class="flex">
+      <div>
+        <br/><%= image_tag @song.avatar.url(:medium) %><br/>
 
-    <audio controls>
-      <source src="<%= @song.url.url %>" type="audio/ogg">
-      <source src="<%= @song.url.url %>" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
+        <audio controls>
+          <source src="<%= @song.url.url %>" type="audio/ogg">
+          <source src="<%= @song.url.url %>" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
 
-    <br/><br/>
+      <div class="margins padding">
+        <% if logged_in? %>
+          <h5>Add this song to your playlist:</h5>
+          <div id="playlist-width">
+            <%= bootstrap_form_for @song_playlist, url: add_playlist_song_path(current_user) do |f| %>
+              <%= f.collection_select :playlist_id, current_user.playlists, :id, :name, hide_label: true, :prompt => 'Select Playlist' %>
+              <%= f.submit "Add Song", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 
-    <% if logged_in? %>
-        <h5>Add this song to your playlist:</h5>
-        <div id="playlist-width">
-          <%= bootstrap_form_for @song_playlist, url: add_playlist_song_path(current_user) do |f| %>
-            <%= f.collection_select :playlist_id, current_user.playlists, :id, :name, hide_label: true, :prompt => 'Select Playlist' %>
-            <%= f.submit "Add Song", class: "btn btn-primary" %>
-          <% end %>
-        </div>
-    <% end %>
-    <br/><br/>
-
-      <h5>Code</h5>
-      <pre class="prettyprint">
+      <div class="margins">
+        <h5>Code</h5>
+        <pre class="prettyprint">
 <!-- This needs to be left-aligned -->
 <%= @song.code %>
-      </pre>
-
-      <% if logged_in? && @user == current_user %>
-      <div class="row container-fluid center-text">
-        <h4><%= link_to "Edit Song", edit_user_song_path(@user, @song) %></h4>
+        </pre>
       </div>
-      <% end %>
-      <br><br>
+    </div>
+
   </div>
+
+  <% if logged_in? && @user == current_user %>
+  <div id="song-menu">
+    <a href= <%= edit_user_song_path(@user, @song) %> >
+      <div class="translucent center center-text">
+        <h4>Edit Song</h4>
+      </div>
+    </a>
+  </div>
+  <% end %>
+
   <div class="translucent center">
       <h4>Add a Comment</h4>
       <%= bootstrap_form_for [@user, @song, @song_comment] do |f| %>
