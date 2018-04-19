@@ -5,22 +5,8 @@
     <h1 class="center-text">Login</h1>
       <div class="translucent center">
 
-        <% if flash[:errors] %>
-          <div class="mid-section alert alert-danger" role="alert">
-            <%= flash[:errors] %>
-          </div>
-        <% elsif flash[:info] %>
-          <div class="mid-section alert " role="alert">
-            <%= flash[:info] %>
-          </div>
-        <% elsif flash[:warning] %>
-          <div class="mid-section alert alert-warning" role="alert">
-            <%= flash[:warning] %>
-          </div>
-          <% elsif flash[:success] %>
-            <div class="mid-section alert alert-success" role="alert">
-              <%= flash[:success] %>
-            </div>
+        <% flash.each do |key, value| %>
+          <%= content_tag :div, value, class: "mid-section alert alert-#{key}", role: "alert" %>
         <% end %>
 
         <%= bootstrap_form_for sessions_path do |f| %>
