@@ -2,6 +2,26 @@
   <div class="translucent center center-text">
       <h1>All Songs</h1>
 
+      <%= form_tag(user_songs_path(@user), :method => "get", id: "search-form") do %>
+        <div class="black">
+          <%= text_field_tag :search, params[:search], placeholder: "Search by Genre" %> &emsp;
+          <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+        </div>
+
+      <% end %>
+      <% if @songs.empty? %>
+        <div class="translucent center center-text">
+          <h2>Genre Not Found</h2>
+          <h3>List of Available Genres!</h3>
+        </div>
+        <% @genres.each do |g| %>
+          <%= form_tag(user_songs_path(@user), :method => "get", id: "search-form") do %>
+             <%= hidden_field_tag :search, g  %>
+            <h3><%= submit_tag g, :name => nil, class: "btn btn-primary" %></h3>
+          <% end %>
+        <% end %>
+      <% end %>
+
     <%= render partial: "layouts/show_cards" %>
   </div>
 </body>

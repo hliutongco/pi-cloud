@@ -3,7 +3,12 @@ class SongsController < ApplicationController
   before_action :set_user
 
   def index
-    @songs = Song.all
+    if params[:search]
+     @songs = Song.select{|s| s.genre.downcase.strip == params[:search].downcase.strip}
+    else
+     @songs = Song.all
+    end
+    @genres = Song.genres
   end
 
   def show

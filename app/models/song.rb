@@ -36,4 +36,10 @@ class Song < ApplicationRecord
     end
     popular
   end
+
+  def self.genres
+    self.all.map do |song|
+      song.genre
+    end.uniq
+  end
 end
