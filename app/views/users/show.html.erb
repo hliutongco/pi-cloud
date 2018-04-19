@@ -1,11 +1,19 @@
 <body id="user-show" class="full-page">
+  <% if logged_in? && @user == current_user %>
+    <div class="center-text" id="footer">
 
+        <div class="translucent col-md-4"><h4><%= link_to "Edit Account", edit_user_path(@user) %></h4></div>
+        <div class="translucent col-md-4"><h4><%= link_to "Add Song", new_user_song_path(:user_id => @user.id)%></h4></div>
+        <div class="translucent col-md-4"><h4><%= link_to "Add Playlist", new_user_playlist_path(:user_id => @user.id) %></h4></div>
+
+    </div>
+  <% end %>
   <% flash.each do |key, value| %>
     <%= content_tag :div, value, class: "mid-section alert alert-#{key}", role: "alert" %>
   <% end %>
 
       <div class="translucent center center-text flex">
-        <div>
+        <div class="padding">
           <h1><%= @user.name %></h1>
           <%= image_tag @user.avatar.url(:medium) %>
           <br><br>
@@ -22,7 +30,7 @@
           </div>
 
     </div>
-    <div>
+    <div class="padding margins">
       <h3>Bio</h3>
       <p><%= @user.bio == "" ? "No bio was written for #{@user.name}." :  @user.bio  %></p>
 
@@ -38,25 +46,14 @@
     </div>
   </div>
 
-  <div class="translucent center center-text">
     <% if @songs.count > 0 %>
-      <h3>Songs</h3>
-        <%= render partial: "layouts/show_cards" %>
+      <div class="translucent center center-text">
+        <h3>Songs</h3>
+          <%= render partial: "layouts/show_cards" %>
+      </div>
     <% end %>
-  </div>
 
   <!-- this part is just for Logged in user
   not for other users viewing the page -->
-
-  <div class="translucent center center-text">
-  <% if logged_in? && @user == current_user %>
-    <div class="row container-fluid">
-      <h4><div class="col-md-4"><%= link_to "Edit Account", edit_user_path(@user) %> </div>
-      <div class="col-md-4"><%= link_to "Add Song", new_user_song_path(:user_id => @user.id)%> </div>
-      <div class="col-md-4"><%= link_to "Add Playlist", new_user_playlist_path(:user_id => @user.id) %></div></h4>
-    </div>
-
-  <% end %>
-</div>
 
 </body>
