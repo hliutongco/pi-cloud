@@ -470,6 +470,9 @@ a:hover {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 20px;
+ }
+
+ .border-top {
   border-top: 1px solid white;
  }
 
@@ -477,37 +480,15 @@ a:hover {
   border-left: 1px solid white;
  }
 
+ .border-all {
+   border: 1px solid white;
+ }
+
 .menu div:hover {
   background-color: rgba(255, 255, 255,0.8);
  }
 
  .menu h4 {
-   text-decoration: none;
-   color: #33cccc;
- }
-
- #song-menu div {
-     border: 1px solid white;
- }
-
- #song-menu div:hover {
-    background-color: rgba(255, 255, 255,0.8);
- }
-
- #song-menu h4 {
-   text-decoration: none;
-   color: #33cccc;
- }
-
- #playlist-menu div {
-     border: 1px solid white;
- }
-
- #playlist-menu div:hover {
-    background-color: rgba(255, 255, 255,0.8);
- }
-
- #playlist-menu h4 {
    text-decoration: none;
    color: #33cccc;
  }

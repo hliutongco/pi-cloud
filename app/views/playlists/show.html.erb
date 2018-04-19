@@ -59,9 +59,9 @@
 
 
 <% if logged_in? && @playlist.user == current_user %>
-  <div id="playlist-menu">
+  <div class="menu">
     <a href= <%= edit_user_playlist_path(@playlist.user, @playlist) %> >
-      <div class="translucent center center-text">
+      <div class="translucent center center-text border-all">
         <h4>Edit Playlist</h4>
       </div>
     </a>

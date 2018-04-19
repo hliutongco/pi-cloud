@@ -4,9 +4,9 @@
 
   <% if logged_in? && @user == current_user %>
     <div class="center-text menu">
-      <a href="<%= edit_user_path(@user) %>"><div class="translucent col-md-4"><h4>Edit Account</h4></div></a>
-      <a href="<%= new_user_song_path(:user_id => @user.id) %>"><div class="translucent col-md-4 border-left"><h4>Add Song</h4></div></a>
-      <a href="<%= new_user_playlist_path(:user_id => @user.id) %>"><div class="translucent col-md-4 border-left"><h4>Add Playlist</h4></div></a>
+      <a href="<%= edit_user_path(@user) %>"><div class="translucent col-md-4 border-top"><h4>Edit Account</h4></div></a>
+      <a href="<%= new_user_song_path(:user_id => @user.id) %>"><div class="translucent col-md-4 border-left border-top"><h4>Add Song</h4></div></a>
+      <a href="<%= new_user_playlist_path(:user_id => @user.id) %>"><div class="translucent col-md-4 border-left border-top"><h4>Add Playlist</h4></div></a>
     </div>
   <% end %>
 

@@ -16,7 +16,7 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=ruby;skin=desert"></script>
 
     <div class="flex">
-      <div>
+      <div class="center-text">
         <br/><%= image_tag @song.avatar.url(:medium) %><br/>
 
         <audio controls>
@@ -50,9 +50,9 @@
   </div>
 
   <% if logged_in? && @user == current_user %>
-    <div id="song-menu">
+    <div class="menu">
       <a href= <%= edit_user_song_path(@user, @song) %> >
-        <div class="translucent center center-text">
+        <div class="translucent center center-text border-all">
           <h4>Edit Song</h4>
         </div>
       </a>
