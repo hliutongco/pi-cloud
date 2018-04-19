@@ -21,5 +21,14 @@ class Playlist < ApplicationRecord
     @playlist << song
   end
 
+  def self.moods
+    moods = []
+    self.all.each do |p|
+      p.mood.split(", ").each do |m|
+        moods << m
+      end
+    end
+    moods.uniq
+  end
 
 end

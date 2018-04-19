@@ -4,6 +4,12 @@ class PlaylistsController < ApplicationController
 
   def index
     @playlists = Playlist.all
+    if params[:search]
+     @playlists = Playlist.select{|p| p.mood.downcase.include?(params[:search].downcase.strip)}
+    else
+     @playlists = Playlist.all
+    end
+    @moods = Playlist.moods
   end
 
   def show

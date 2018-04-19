@@ -7,8 +7,8 @@
           <%= text_field_tag :search, params[:search], placeholder: "Search by Genre" %> &emsp;
           <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
         </div>
-
       <% end %>
+
       <% if @songs.empty? %>
         <div class="translucent center center-text">
           <h2>Genre Not Found</h2>
