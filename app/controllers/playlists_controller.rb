@@ -7,6 +7,14 @@ class PlaylistsController < ApplicationController
   end
 
   def show
+    if logged_in?
+      @song_playlist = SongPlaylist.new
+      @playlist_comment = PlaylistComment.new
+      @comments = PlaylistComment.all
+      if @comments
+        @comments = PlaylistComment.all.select {|c| c.playlist_id == @playlist.id}
+      end
+    end
   end
 
   def new

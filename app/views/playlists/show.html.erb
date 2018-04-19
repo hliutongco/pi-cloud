@@ -40,5 +40,40 @@
         <h4><%= link_to "Edit Playlist", edit_user_playlist_path(@playlist.user, @playlist) %></h4>
       </div>
     <% end %>
+    <br>
+  </div>
+  <div class="translucent center">
+    <h4>Add a Comment</h4>
+    <%= bootstrap_form_for [@user, @playlist, @playlist_comment] do |f| %>
+      <%= f.text_area :content, hide_label: true %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :playlist_id, :value => @playlist.id %>
+      <%= f.submit "Create Comment", class: "btn btn-primary" %>
+    <% end %>
+    <br>
+
+    <h4>Comments</h4>
+    <% if @comments %>
+      <% @comments.each do |c| %>
+        <div class="translucent">
+          <div class="flex-left">
+            <div class="col-md-2">
+              <%= link_to (image_tag c.user.avatar.url(:thumb)), c.user %>
+              <div class="center-text">
+                <%= c.user.name %>
+              </div>
+            </div>
+            <h5><%= c.content %></h5>
+          </div>
+        </div>
+          <% if logged_in? && c.user == current_user %>
+            <%= form_tag user_playlist_playlist_comment_path(@user, @playlist, c, c.content), method: 'delete' do %>
+              <%= submit_tag 'Delete Comment', class: "btn-xs btn-primary" %>
+            <% end %>
+          <% end %>
+        <br>
+      <% end %>
+    <% end %>
+
   </div>
 </body>

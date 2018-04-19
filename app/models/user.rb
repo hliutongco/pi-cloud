@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   has_many :song_comments
+  has_many :playlist_comments
   has_many :songs, dependent: :delete_all
   has_many :playlists, dependent: :delete_all
 

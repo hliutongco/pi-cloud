@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     resources :songs do
       resources :song_comments
     end
-    resources :playlists
+    resources :playlists do
+      resources :playlist_comments
+    end
   end
 
   resources :users do
