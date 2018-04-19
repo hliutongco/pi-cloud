@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
+  validates_length_of :bio, :minimum => 0, :maximum => 500, :allow_blank => true
 
   has_many :song_comments
   has_many :songs, dependent: :delete_all

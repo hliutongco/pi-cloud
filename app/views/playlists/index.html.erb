@@ -2,10 +2,12 @@
   <div class="translucent center">
 
     <h1>All Playlists</h1>
-    <ol>
-      <% @playlists.each_with_index do |p, i| %>
-        <li><%= link_to "#{p.name} - #{p.user.name}", user_playlist_path(p.user, p) %><br></li>
-      <% end %>
-    </ol>
+    <h4>
+      <ol>
+        <% @playlists.each_with_index do |p, i| %>
+          <li><%= link_to "#{p.name} - #{p.user.name}", user_playlist_path(p.user, p) %></li>
+        <% end %>
+      </ol>
+    </h4>
   </div>
 </body>

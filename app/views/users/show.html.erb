@@ -1,52 +1,56 @@
 <body id="user-show" class="full-page">
-  <div class="translucent center">
-    <h1><%= @user.name %></h1>
-    <%= image_tag @user.avatar.url(:medium) %>
-    <br><br>
-    <div class="flex-left">
-      <%= form_tag following_user_path(@user), method: 'get' do %>
-        <%= submit_tag "Following: #{@user.following.count}", class: "btn btn-primary" %>
-      <% end %>
-      &emsp;
-      <%= form_tag followers_user_path(@user), method: 'get' do %>
-        <%= submit_tag "Followers: #{@user.followers.count}", class: "btn btn-primary" %>
-      <% end %>
-      &emsp;
-      <%= render "/components/follow_button" %>
+  <div class="translucent center center-text flex">
+    <div>
+      <h1><%= @user.name %></h1>
+      <%= image_tag @user.avatar.url(:medium) %>
+      <br><br>
+      <div class="flex">
+        <%= form_tag following_user_path(@user), method: 'get' do %>
+          <%= submit_tag "Following: #{@user.following.count}", class: "btn btn-primary" %>
+        <% end %>
+        &emsp;
+        <%= form_tag followers_user_path(@user), method: 'get' do %>
+          <%= submit_tag "Followers: #{@user.followers.count}", class: "btn btn-primary" %>
+        <% end %>
+        &emsp;
+        <%= render "/components/follow_button" %>
+      </div>
     </div>
+    <div>
+      <h3>Bio</h3>
+      <p><%= @user.bio == "" ? "No bio was written for #{@user.name}." :  @user.bio  %></p>
 
-    <h3>Bio</h3>
-
-    <p><%= @user.bio == "" ? "No bio was written for #{@user.name}." :  @user.bio  %></p>
-    <% if @playlists.count > 0 %>
-      <h3>Playlists</h3>
-      <% @playlists.each do |p| %>
-        <%= link_to p.name, user_playlist_path(@user, p) %>
+      <% if @playlists.count > 0 %>
+        <h3>Playlists</h3>
+        <% @playlists.each do |p| %>
+          <%= link_to p.name, user_playlist_path(@user, p) %>
+        <% end %>
       <% end %>
-    <% end %>
+
+      <h3>Contact</h3>
+      <p><%= @user.email %></p>
+    </div>
+  </div>
+
+  <div class="translucent center center-text">
     <% if @songs.count > 0 %>
       <h3>Songs</h3>
         <%= render partial: "layouts/show_cards" %>
     <% end %>
-    <h3>Contact</h3>
-    <p><%= @user.email %></p>
-
-    <!-- this part is just for Logged in user
-    not for other users viewing the page -->
-    <br><br>
-    <% if logged_in? && @user == current_user %>
-
-
-      <div class="row container-fluid center-text">
-        <h4><div class="col-md-4"><%= link_to "Edit Account", edit_user_path(@user) %> </div>
-        <div class="col-md-4"><%= link_to "Add Song", new_user_song_path(:user_id => @user.id)%> </div>
-        <div class="col-md-4"><%= link_to "Add Playlist", new_user_playlist_path(:user_id => @user.id) %></div></h4>
-      </div>
-      <!-- <h4 class="center"> |  </h4> -->
-
-    <% end %>
-    <br>
-
   </div>
+
+  <!-- this part is just for Logged in user
+  not for other users viewing the page -->
+
+  <div class="translucent center center-text">
+  <% if logged_in? && @user == current_user %>
+    <div class="row container-fluid">
+      <h4><div class="col-md-4"><%= link_to "Edit Account", edit_user_path(@user) %> </div>
+      <div class="col-md-4"><%= link_to "Add Song", new_user_song_path(:user_id => @user.id)%> </div>
+      <div class="col-md-4"><%= link_to "Add Playlist", new_user_playlist_path(:user_id => @user.id) %></div></h4>
+    </div>
+
+  <% end %>
+</div>
 
 </body>
