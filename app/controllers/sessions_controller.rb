@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     redirect_to login_path
   end
-  #
+
   # def reset
   #   @mail_user = User.find_by(email: params[:email])
   #   UserMailer.with(user: @mail_user).reset_email.deliver_now

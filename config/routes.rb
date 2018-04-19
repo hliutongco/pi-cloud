@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   # get '/new_password', to: "password_resets#edit", as: 'new_password'
 
   resources :password_resets, only: [:new, :create, :edit, :update]
-
+  resources :account_activations, only: [:edit]
+  
   get "/signup", to: "users#new", as: "signup"
   get "/login", to: "sessions#new", as: "login"
   post "/login", to: "sessions#create", as: "sessions"

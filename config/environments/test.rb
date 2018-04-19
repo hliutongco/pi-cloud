@@ -6,7 +6,7 @@ Rails.application.configure do
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
-  
+
 
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that
@@ -26,15 +26,8 @@ Rails.application.configure do
 
 
     config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'gmail.com',
-      user_name:            'picloud.notifications',
-      password:             'flatironpw',
-      authentication:       'plain',
-      enable_starttls_auto: true }
-      config.action_mailer.default_url_options = { :host => "test.localhost:3000" }
+    config.action_mailer.smtp_settings = ENV['EMAIL']
+      config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
     Paperclip.options[:image_magick_path] = "/opt/ImageMagick/bin"
     Paperclip.options[:command_path] = "/opt/ImageMagick/bin"

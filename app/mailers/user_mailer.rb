@@ -2,14 +2,14 @@ class UserMailer < ApplicationMailer
   default from: 'picloud.notifications@gmail.com'
 
   def password_reset(user)
+    @user = user
     user.reset_token = User.new_token
-    reset_email(user)
+    mail(to: user.email, subject: 'Password Reset')
   end
 
-  def reset_email(user)
-    @user = user  
-    mail(to: user.email, subject: 'Password Reset')
-
+  def account_activation(user)
+    @user = user
+    mail(to: user.email, subject: 'Activate your Account')
   end
 
 end
