@@ -32,7 +32,7 @@ class SongsController < ApplicationController
       redirect_to [@user, @song]
     else
       flash[:errors] = @song.errors.full_messages
-      redirect_to edit_user_song_path(@user, @song)
+      render :edit
     end
   end
 
@@ -55,7 +55,7 @@ class SongsController < ApplicationController
       redirect_to user_song_path(@user, @song)
     else
       flash[:errors] = @song.errors.full_messages
-      redirect_to new_user_song_path
+      render :new
     end
   end
 
