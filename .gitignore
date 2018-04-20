@@ -8,7 +8,7 @@
 .env
 
 # Ignore config environment files
-# /config/environments/*
+/config/environments/*
 
 # Ignore bundler config.
 /.bundle

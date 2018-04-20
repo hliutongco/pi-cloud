@@ -6,8 +6,6 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    # @mail_user = User.find_by(email: params[:email])
-    # UserMailer.with(user: @mail_user).reset_email.deliver_now
     @user = User.find_by(email: params[:email].downcase)
 
     if @user

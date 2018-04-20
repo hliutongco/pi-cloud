@@ -1,10 +1,13 @@
 <body id="user-show" class="full-page">
 
-  <% flash.each do |key, value| %>
-    <%= content_tag :div, value, class: "mid-section alert alert-#{key}", role: "alert" %>
-  <% end %>
 
   <div class="translucent center">
+
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "mid-section alert alert-#{key}", role: "alert" %>
+    <% end %>
+
+
     <h1><%= @user.name %></h1>
     <%= image_tag @user.avatar.url(:medium) %>
     <br><br>

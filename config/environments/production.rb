@@ -47,6 +47,17 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+     address:              'smtp.gmail.com',
+     port:                 587,
+     domain:               'gmail.com',
+     user_name:            'picloud.notifications',
+     password:             'flatironpw',
+     authentication:       'plain',
+     enable_starttls_auto: true
+   }
+
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug
@@ -78,7 +89,17 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = ENV['EMAIL']
+  # config.action_mailer.smtp_settings = ENV['EMAIL']
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "localhost:3000",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["USERNAME"],
+    password: ENV["PASSWORD"]
+}
 
   Paperclip.options[:image_magick_path] = "/opt/ImageMagick/bin"
   Paperclip.options[:command_path] = "/opt/ImageMagick/bin"
