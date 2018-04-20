@@ -32,16 +32,29 @@ class SongsController < ApplicationController
       redirect_to [@user, @song]
     else
       flash[:errors] = @song.errors.full_messages
-      render :edit
+      redirect_to edit_user_song_path(@user, @song)
     end
   end
 
   def add_to_playlist
     @playlist = params[:song_playlist][:playlist_id]
-    @playlist_song = SongPlaylist.new(playlist_song_params)
-    @playlist_song.song_id = params[:id]
-    @playlist_song.save
-    redirect_to user_playlist_path(@user, @playlist)
+
+    p_id = @playlist.to_i
+    s_id = params[:id].to_i
+    already_added = SongPlaylist.all.select do |sp|
+      sp.playlist_id == p_id && sp.song_id == s_id
+    end
+
+
+    if already_added.empty?
+      @playlist_song = SongPlaylist.new(playlist_song_params)
+      @playlist_song.song_id = params[:id]
+      @playlist_song.save
+      redirect_to user_playlist_path(@user, @playlist)
+    else
+      flash[:add_to_playlist_errors] = "This song is already on your playlist."
+      redirect_to user_song_path(@user, @song)
+    end
   end
 
   def new
@@ -55,7 +68,7 @@ class SongsController < ApplicationController
       redirect_to user_song_path(@user, @song)
     else
       flash[:errors] = @song.errors.full_messages
-      render :new
+      redirect_to new_user_song_path(@user, @song)
     end
   end
 

@@ -19,14 +19,14 @@
     </div>
     <% end %>
 
+    <div class="center">
+      <% flash.each do |key, value| %>
+        &emsp;
+        <%= content_tag :div, value, class: "mid-section alert alert-#{key}", role: "alert" %>
+      <% end %>
+    </div>
+
       <div class="translucent center center-text flex">
-
-
-        <div class="" style="width:100%;">
-          <% if flash[:success] && !flash[:success].empty? %>
-            <%= content_tag :div, flash[:success], class: "mid-section alert alert-success", role: "alert" %>
-          <% end %>
-        </div>
 
         <div class="padding">
           <h1><%= @user.name %></h1>
@@ -35,13 +35,13 @@
             <div class="flex">
               <%= form_tag following_user_path(@user), method: 'get' do %>
                 <%= submit_tag "Following: #{@user.following.count}", class: "btn btn-primary" %>
-                  <% end %>
-                    &emsp;
-                    <%= form_tag followers_user_path(@user), method: 'get' do %>
-                      <%= submit_tag "Followers: #{@user.followers.count}", class: "btn btn-primary" %>
-                        <% end %>
-                          &emsp;
-                          <%= render "/components/follow_button" %>
+              <% end %>
+              &emsp;
+              <%= form_tag followers_user_path(@user), method: 'get' do %>
+                <%= submit_tag "Followers: #{@user.followers.count}", class: "btn btn-primary" %>
+              <% end %>
+              &emsp;
+              <%= render "/components/follow_button" %>
             </div>
         </div>
         <div class="padding margins">
