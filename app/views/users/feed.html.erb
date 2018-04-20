@@ -51,24 +51,28 @@
   <div class="translucent center-text margins padding">
     <h1>Popular Artists</h1>
     <div class="flex">
+    <% if @users.count > 0 %>
+      <% @users.each do |u| %>
+        <br/>
 
-    <% @users.each do |u| %>
-      <br/>
-      <div class="translucent padding margins">
-        <%= link_to (image_tag u.avatar.url(:thumb)), u %>
-        <h3><%= link_to u.name, u %></h3>
-        <div class="flex">
-          <%= form_tag following_user_path(u), method: 'get' do %>
-            <%= submit_tag "Following: #{u.following.count}", class: "btn btn-primary" %>
-          <% end %>
-          &emsp;
-          <%= form_tag followers_user_path(u), method: 'get' do %>
-            <%= submit_tag "Followers: #{u.followers.count}", class: "btn btn-primary" %>
-          <% end %>
-          &emsp;
-          <%= render "/components/follow_button" %>
+        <div class="translucent padding margins">
+          <%= link_to (image_tag u.avatar.url(:thumb)), u %>
+          <h3><%= link_to u.name, u %></h3>
+          <div class="flex">
+            <%= form_tag following_user_path(u), method: 'get' do %>
+              <%= submit_tag "Following: #{u.following.count}", class: "btn btn-primary" %>
+            <% end %>
+            &emsp;
+            <%= form_tag followers_user_path(u), method: 'get' do %>
+              <%= submit_tag "Followers: #{u.followers.count}", class: "btn btn-primary" %>
+            <% end %>
+            &emsp;
+            <%= render "/components/follow_button" %>
+          </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      Currently, we have no artists.
     <% end %>
   </div>
   </div>

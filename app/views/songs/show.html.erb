@@ -1,7 +1,11 @@
 <body id="feed" class="full-page">
 
   <div class="translucent center">
-
+    <% if flash[:add_to_playlist_errors] %>
+      <div class="mid-section alert alert-danger" role="alert">
+        <%= flash[:add_to_playlist_errors] %>
+      </div>
+    <% end %>
     <div>
       <h1 class="center-text">Title: <%= @song.title %></h1>
       <h5 class="center-text">By: <%= link_to @song.user.name, @song.user %></h5>
