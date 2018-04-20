@@ -35,7 +35,7 @@ class PlaylistsController < ApplicationController
       redirect_to user_playlist_path(@user, @playlist)
     else
       flash[:errors] = @playlist.errors.full_messages
-      redirect_to new_user_playlist_path
+      render :new
     end
   end
 
@@ -52,10 +52,10 @@ class PlaylistsController < ApplicationController
   def update
     @playlist.update(playlist_params)
     if @playlist.valid?
-      redirect_to user_playlist_path(@playlist)
+      redirect_to user_playlist_path(@user, @playlist)
     else
       flash[:errors] = @playlist.errors.full_messages
-      redirect_to edit_user_playlist_path(@user, @playlist)
+      render :edit
     end
   end
 
