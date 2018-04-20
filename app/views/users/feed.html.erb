@@ -1,11 +1,11 @@
 <body id="feed" class="full-page">
 
-  <div class="translucent center">
+  <div class="translucent center center-text">
     <h1>Featured Artist</h1>
     <h3><%= link_to @user.name, @user %></h3>
     <%= link_to (image_tag @user.avatar.url(:medium)), @user %>
     <br><br>
-    <div class="flex-left">
+    <div class="flex">
       <%= form_tag following_user_path(@user), method: 'get' do %>
         <%= submit_tag "Following: #{@user.following.count}", class: "btn btn-primary" %>
       <% end %>
@@ -14,14 +14,14 @@
         <%= submit_tag "Followers: #{@user.followers.count}", class: "btn btn-primary" %>
       <% end %>
       &emsp;
-      <%= render "/components/follow_button" %>
+      <%= render partial: "/components/follow_button" %>
     </div>
   </div>
 
-  <div class="translucent center">
+  <div class="translucent center center-text">
     <h1>Featured Song</h1>
-    <h3><%= link_to @song.title, user_songs_path(@song) %></h3>
-    <%= link_to (image_tag @song.avatar.url(:medium)), user_songs_path(@song) %>
+    <h3><%= link_to @song.title, user_song_path(@song.user, @song) %></h3>
+    <%= link_to (image_tag @song.avatar.url(:medium)), user_song_path(@song.user, @song) %>
     <br><br>
     <audio controls>
       <source src="<%= @song.url.url %>" type="audio/ogg">
@@ -38,47 +38,55 @@
     </h5>
   </div>
 
-  <div class="translucent center">
+  <div class="translucent center-text margins padding">
     <h1>Popular Artists</h1>
+    <div class="flex">
+
     <% @users.each do |u| %>
-      <h3><%= link_to u.name, u %></h3>
-      <%= link_to (image_tag u.avatar.url(:thumb)), u %>
-      <br><br>
-      <div class="flex-left">
-        <%= form_tag following_user_path(u), method: 'get' do %>
-          <%= submit_tag "Following: #{u.following.count}", class: "btn btn-primary" %>
-        <% end %>
-        &emsp;
-        <%= form_tag followers_user_path(u), method: 'get' do %>
-          <%= submit_tag "Followers: #{u.followers.count}", class: "btn btn-primary" %>
-        <% end %>
-        &emsp;
-        <%= render "/components/follow_button" %>
+      <br/>
+      <div class="translucent padding margins">
+        <%= link_to (image_tag u.avatar.url(:thumb)), u %>
+        <h3><%= link_to u.name, u %></h3>
+        <div class="flex">
+          <%= form_tag following_user_path(u), method: 'get' do %>
+            <%= submit_tag "Following: #{u.following.count}", class: "btn btn-primary" %>
+          <% end %>
+          &emsp;
+          <%= form_tag followers_user_path(u), method: 'get' do %>
+            <%= submit_tag "Followers: #{u.followers.count}", class: "btn btn-primary" %>
+          <% end %>
+          &emsp;
+          <%= render "/components/follow_button" %>
+        </div>
       </div>
-      <br>
     <% end %>
   </div>
+  </div>
 
-  <div class="translucent center">
+  <div class="translucent center-text margins padding">
     <h1>Popular Songs</h1>
-    <% @songs.each do |s| %>
-      <h3><%= link_to s.title, user_songs_path(s) %></h3>
-      <%= link_to (image_tag s.avatar.url(:thumb)), user_songs_path(s) %>
-      <br><br>
-      <audio controls>
-        <source src="<%= @song.url.url %>" type="audio/ogg">
-        <source src="<%= @song.url.url %>" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <h5>By: <%= link_to s.user.name, s.user %></h5>
-      <h5>Genre:
-        <% if s.genre != "" %>
-          <%= s.genre %>
-        <% else %>
-          n/a
-        <% end %>
-      </h5>
-    <% end %>
+    <div class="flex">
+      <% @songs.each do |s| %>
+        <div class="translucent padding margins">
+          <h3><%= link_to s.title, user_song_path(s.user, s) %></h3>
+          <%= link_to (image_tag s.avatar.url(:thumb)), user_song_path(s.user, s) %>
+          <br><br>
+          <audio controls>
+            <source src="<%= @song.url.url %>" type="audio/ogg">
+            <source src="<%= @song.url.url %>" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <h5>By: <%= link_to s.user.name, s.user %></h5>
+          <h5>Genre:
+            <% if s.genre != "" %>
+              <%= s.genre %>
+            <% else %>
+              n/a
+            <% end %>
+          </h5>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </body>

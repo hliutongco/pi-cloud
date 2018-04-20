@@ -4,9 +4,23 @@ class PlaylistsController < ApplicationController
 
   def index
     @playlists = Playlist.all
+    if params[:search]
+     @playlists = Playlist.select{|p| p.mood.downcase.include?(params[:search].downcase.strip)}
+    else
+     @playlists = Playlist.all
+    end
+    @moods = Playlist.moods
   end
 
   def show
+    if logged_in?
+      @song_playlist = SongPlaylist.new
+      @playlist_comment = PlaylistComment.new
+      @comments = PlaylistComment.all
+      if @comments
+        @comments = PlaylistComment.all.select {|c| c.playlist_id == @playlist.id}
+      end
+    end
   end
 
   def new

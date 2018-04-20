@@ -1,11 +1,36 @@
 <body id="playlists-index" class="full-page">
   <div class="translucent center">
 
-    <h1>All Playlists</h1>
-    <ol>
-      <% @playlists.each_with_index do |p, i| %>
-        <li><%= link_to "#{p.name} - #{p.user.name}", user_playlist_path(p.user, p) %><br></li>
+    <h1 class="center-text">All Playlists</h1>
+
+    <%= form_tag(user_playlists_path(@user), :method => "get", id: "search-form") do %>
+      <div class="black center-text">
+        <%= text_field_tag :search, params[:search], placeholder: "Search by Mood" %> &emsp;
+        <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <% if @playlists.empty? %>
+      <div class="translucent center center-text">
+        <h2>Playlist Mood Not Found</h2>
+        <h3>List of Available Moods!</h3>
+      </div>
+      <% @moods.each do |m| %>
+        <%= form_tag(user_playlists_path(@user), :method => "get", id: "search-form") do %>
+           <%= hidden_field_tag :search, m  %>
+          <h3><%= submit_tag m, :name => nil, class: "btn btn-primary" %></h3>
+        <% end %>
       <% end %>
-    </ol>
+    <% end %>
+
+
+    <h4>
+      <ol>
+        <% @playlists.each_with_index do |p, i| %>
+          <li><%= link_to "#{p.name} - #{p.user.name}", user_playlist_path(p.user, p) %></li>
+          <p><%= "Mood: #{p.mood}" %></p>
+        <% end %>
+      </ol>
+    </h4>
   </div>
 </body>

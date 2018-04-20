@@ -5,6 +5,7 @@ class Playlist < ApplicationRecord
   belongs_to :user
   has_many :song_playlists
   has_many :songs, through: :song_playlists
+  has_many :playlist_comments
 
   def all_songs
     @playlist.songs
@@ -20,5 +21,14 @@ class Playlist < ApplicationRecord
     @playlist << song
   end
 
+  def self.moods
+    moods = []
+    self.all.each do |p|
+      p.mood.split(", ").each do |m|
+        moods << m
+      end
+    end
+    moods.uniq
+  end
 
 end

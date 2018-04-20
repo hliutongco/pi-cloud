@@ -1,4 +1,15 @@
 <body id="user-show" class="full-page">
+  <!-- this part is just for Logged in user
+  not for other users viewing the page -->
+
+  <% if logged_in? && @user == current_user %>
+    <div class="center-text menu">
+      <a href="<%= edit_user_path(@user) %>"><div class="translucent col-md-4 border-top"><h4>Edit Account</h4></div></a>
+      <a href="<%= new_user_song_path(:user_id => @user.id) %>"><div class="translucent col-md-4 border-left border-top"><h4>Add Song</h4></div></a>
+      <a href="<%= new_user_playlist_path(:user_id => @user.id) %>"><div class="translucent col-md-4 border-left border-top"><h4>Add Playlist</h4></div></a>
+    </div>
+  <% end %>
+
 
 
   <div class="translucent center">
@@ -23,38 +34,28 @@
       <%= render "/components/follow_button" %>
     </div>
 
-    <h3>Bio</h3>
+    </div>
+    <div class="padding margins">
+      <h3>Bio</h3>
+      <p><%= @user.bio == "" ? "No bio was written for #{@user.name}." :  @user.bio  %></p>
 
-    <p><%= @user.bio == "" ? "No bio was written for #{@user.name}." :  @user.bio  %></p>
-    <% if @playlists.count > 0 %>
-      <h3>Playlists</h3>
-      <% @playlists.each do |p| %>
-        <%= link_to p.name, user_playlist_path(@user, p) %>
+      <% if @playlists.count > 0 %>
+        <h3>Playlists</h3>
+        <% @playlists.each do |p| %>
+          <%= link_to p.name, user_playlist_path(@user, p) %>
+        <% end %>
       <% end %>
-    <% end %>
-    <% if @songs.count > 0 %>
-      <h3>Songs</h3>
-        <%= render partial: "layouts/show_cards" %>
-    <% end %>
-    <h3>Contact</h3>
-    <p><%= @user.email %></p>
 
-    <!-- this part is just for Logged in user
-    not for other users viewing the page -->
-    <br><br>
-    <% if logged_in? && @user == current_user %>
-
-
-      <div class="row container-fluid center-text">
-        <h4><div class="col-md-4"><%= link_to "Edit Account", edit_user_path(@user) %> </div>
-        <div class="col-md-4"><%= link_to "Add Song", new_user_song_path(:user_id => @user.id)%> </div>
-        <div class="col-md-4"><%= link_to "Add Playlist", new_user_playlist_path(:user_id => @user.id) %></div></h4>
-      </div>
-      <!-- <h4 class="center"> |  </h4> -->
-
-    <% end %>
-    <br>
-
+      <h3>Contact</h3>
+      <p><%= @user.email %></p>
+    </div>
   </div>
+
+    <% if @songs.count > 0 %>
+      <div class="translucent center center-text">
+        <h3>Songs</h3>
+          <%= render partial: "layouts/show_cards" %>
+      </div>
+    <% end %>
 
 </body>
