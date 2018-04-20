@@ -10,29 +10,28 @@
     </div>
   <% end %>
 
+      <div class="translucent center center-text flex">
 
 
-  <div class="translucent center">
+        <% flash.each do |key, value| %>
+          <%= content_tag :div, value, class: "mid-section alert alert-#{key}", role: "alert" %>
+        <% end %>
+        <div class="padding">
+          <h1><%= @user.name %></h1>
+          <%= image_tag @user.avatar.url(:medium) %>
+          <br><br>
+          <div class="flex">
+            <%= form_tag following_user_path(@user), method: 'get' do %>
+              <%= submit_tag "Following: #{@user.following.count}", class: "btn btn-primary" %>
+            <% end %>
+            &emsp;
+            <%= form_tag followers_user_path(@user), method: 'get' do %>
+              <%= submit_tag "Followers: #{@user.followers.count}", class: "btn btn-primary" %>
+            <% end %>
+            &emsp;
+            <%= render "/components/follow_button" %>
+          </div>
 
-    <% flash.each do |key, value| %>
-      <%= content_tag :div, value, class: "mid-section alert alert-#{key}", role: "alert" %>
-    <% end %>
-
-
-    <h1><%= @user.name %></h1>
-    <%= image_tag @user.avatar.url(:medium) %>
-    <br><br>
-    <div class="flex-left">
-      <%= form_tag following_user_path(@user), method: 'get' do %>
-        <%= submit_tag "Following: #{@user.following.count}", class: "btn btn-primary" %>
-      <% end %>
-      &emsp;
-      <%= form_tag followers_user_path(@user), method: 'get' do %>
-        <%= submit_tag "Followers: #{@user.followers.count}", class: "btn btn-primary" %>
-      <% end %>
-      &emsp;
-      <%= render "/components/follow_button" %>
-    </div>
 
     </div>
     <div class="padding margins">
