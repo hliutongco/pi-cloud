@@ -24,7 +24,7 @@
 
         <div class="" style="width:100%;">
           <% if flash[:success] && !flash[:success].empty? %>
-            <%= content_tag :div, value, class: "mid-section alert alert-success", role: "alert" %>
+            <%= content_tag :div, flash[:success], class: "mid-section alert alert-success", role: "alert" %>
           <% end %>
         </div>
 

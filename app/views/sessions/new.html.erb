@@ -10,7 +10,7 @@
         <% end %>
 
         <%= bootstrap_form_for sessions_path do |f| %>
-          <%= f.text_field "email" %><br>
+          <%= f.email_field "email" %><br>
           <%= f.password_field "password" %><br>
           <%= submit_tag "Login", class: "btn btn-primary" %>
         <% end %>

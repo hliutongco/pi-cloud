@@ -13,15 +13,19 @@
         <div class="translucent center center-text">
           <h2>Genre Not Found</h2>
           <h3>List of Available Genres!</h3>
+          <% if !@genres || @genres.count < 1 %>
+            <p>Currently no genres exist, <%= link_to "would you like to create a song?", new_user_song_path(current_user) %></p>
+          <% end %>
         </div>
         <% @genres.each do |g| %>
           <%= form_tag(user_songs_path(@user), :method => "get", id: "search-form") do %>
-             <%= hidden_field_tag :search, g  %>
+            <%= hidden_field_tag :search, g  %>
             <h3><%= submit_tag g, :name => nil, class: "btn btn-primary" %></h3>
           <% end %>
         <% end %>
-      <% end %>
+      <% else %>
 
+    <% end %>
     <%= render partial: "layouts/show_cards" %>
   </div>
 </body>
