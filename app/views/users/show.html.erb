@@ -4,57 +4,71 @@
 
   <% if logged_in? && @user == current_user %>
     <div class="center-text menu">
-      <a href="<%= edit_user_path(@user) %>"><div class="translucent col-md-4 border-top"><h4>Edit Account</h4></div></a>
-      <a href="<%= new_user_song_path(:user_id => @user.id) %>"><div class="translucent col-md-4 border-left border-top"><h4>Add Song</h4></div></a>
-      <a href="<%= new_user_playlist_path(:user_id => @user.id) %>"><div class="translucent col-md-4 border-left border-top"><h4>Add Playlist</h4></div></a>
+      <a href="<%= edit_user_path(@user) %>">
+        <div class="translucent col-md-4 border-top">
+          <h4>Edit Account</h4></div>
+      </a>
+      <a href="<%= new_user_song_path(:user_id => @user.id) %>">
+        <div class="translucent col-md-4 border-left border-top">
+          <h4>Add Song</h4></div>
+      </a>
+      <a href="<%= new_user_playlist_path(:user_id => @user.id) %>">
+        <div class="translucent col-md-4 border-left border-top">
+          <h4>Add Playlist</h4></div>
+      </a>
     </div>
-  <% end %>
+    <% end %>
 
       <div class="translucent center center-text flex">
 
 
-        <% flash.each do |key, value| %>
-          <%= content_tag :div, value, class: "mid-section alert alert-#{key}", role: "alert" %>
-        <% end %>
+        <div class="" style="width:100%;">
+          <% if flash[:success] && !flash[:success].empty? %>
+            <%= content_tag :div, value, class: "mid-section alert alert-success", role: "alert" %>
+          <% end %>
+        </div>
+
         <div class="padding">
           <h1><%= @user.name %></h1>
           <%= image_tag @user.avatar.url(:medium) %>
-          <br><br>
-          <div class="flex">
-            <%= form_tag following_user_path(@user), method: 'get' do %>
-              <%= submit_tag "Following: #{@user.following.count}", class: "btn btn-primary" %>
-            <% end %>
-            &emsp;
-            <%= form_tag followers_user_path(@user), method: 'get' do %>
-              <%= submit_tag "Followers: #{@user.followers.count}", class: "btn btn-primary" %>
-            <% end %>
-            &emsp;
-            <%= render "/components/follow_button" %>
-          </div>
+            <br><br>
+            <div class="flex">
+              <%= form_tag following_user_path(@user), method: 'get' do %>
+                <%= submit_tag "Following: #{@user.following.count}", class: "btn btn-primary" %>
+                  <% end %>
+                    &emsp;
+                    <%= form_tag followers_user_path(@user), method: 'get' do %>
+                      <%= submit_tag "Followers: #{@user.followers.count}", class: "btn btn-primary" %>
+                        <% end %>
+                          &emsp;
+                          <%= render "/components/follow_button" %>
+            </div>
+        </div>
+        <div class="padding margins">
+          <h3>Bio</h3>
+          <p>
+            <%= @user.bio == "" ? "No bio was written for #{@user.name}." :  @user.bio  %>
+          </p>
 
+          <% if @playlists.count > 0 %>
+            <h3>Playlists</h3>
+              <% @playlists.each do |p| %>
+                <%= link_to p.name, user_playlist_path(@user, p) %>
+              <% end %>
+          <% end %>
 
-    </div>
-    <div class="padding margins">
-      <h3>Bio</h3>
-      <p><%= @user.bio == "" ? "No bio was written for #{@user.name}." :  @user.bio  %></p>
-
-      <% if @playlists.count > 0 %>
-        <h3>Playlists</h3>
-        <% @playlists.each do |p| %>
-          <%= link_to p.name, user_playlist_path(@user, p) %>
-        <% end %>
-      <% end %>
-
-      <h3>Contact</h3>
-      <p><%= @user.email %></p>
-    </div>
-  </div>
-
-    <% if @songs.count > 0 %>
-      <div class="translucent center center-text">
-        <h3>Songs</h3>
-          <%= render partial: "layouts/show_cards" %>
+          <h3>Contact</h3>
+          <p>
+            <%= @user.email %>
+          </p>
+        </div>
       </div>
-    <% end %>
+
+      <% if @songs.count > 0 %>
+        <div class="translucent center center-text">
+          <h3>Songs</h3>
+          <%= render partial: "layouts/show_cards" %>
+        </div>
+        <% end %>
 
 </body>
