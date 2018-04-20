@@ -10,12 +10,15 @@
     </div>
   <% end %>
 
+
+  <div class="center">
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "mid-section alert alert-#{key}", role: "alert" %>
+    <% end %>
+  </div>
+
       <div class="translucent center center-text flex">
 
-
-        <% flash.each do |key, value| %>
-          <%= content_tag :div, value, class: "mid-section alert alert-#{key}", role: "alert" %>
-        <% end %>
         <div class="padding">
           <h1><%= @user.name %></h1>
           <%= image_tag @user.avatar.url(:medium) %>
