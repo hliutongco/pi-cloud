@@ -17,9 +17,20 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
+*{
+  font-family: 'Inconsolata', monospace;
+}
+
+strong, h1,h2,h3,h4,h5,h6, a, nav{
+ font-family: 'Source Code Pro', monospace;
+}
+
+
 * {
   color: white;
 }
+
 .black {
   color: black;
 }
