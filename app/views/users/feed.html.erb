@@ -2,9 +2,12 @@
 
   <div class="translucent center center-text">
     <h1>Featured Artist</h1>
+
     <h3><%= link_to @user.name, @user %></h3>
     <%= link_to (image_tag @user.avatar.url(:medium)), @user %>
+
     <br><br>
+
     <div class="flex">
       <%= form_tag following_user_path(@user), method: 'get' do %>
         <%= submit_tag "Following: #{@user.following.count}", class: "btn btn-primary" %>
@@ -20,22 +23,29 @@
 
   <div class="translucent center center-text">
     <h1>Featured Song</h1>
-    <h3><%= link_to @song.title, user_song_path(@song.user, @song) %></h3>
-    <%= link_to (image_tag @song.avatar.url(:medium)), user_song_path(@song.user, @song) %>
-    <br><br>
-    <audio controls>
-      <source src="<%= @song.url.url %>" type="audio/ogg">
-      <source src="<%= @song.url.url %>" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-    <h5>By: <%= link_to @song.user.name, @song.user %></h5>
-    <h5>Genre:
-      <% if @song.genre != "" %>
-        <%= @song.genre %>
-      <% else %>
-        n/a
-      <% end %>
-    </h5>
+    <% if @song %>
+      <h3><%= link_to @song.title, user_song_path(@song.user, @song) %></h3>
+      <%= link_to (image_tag @song.avatar.url(:medium)), user_song_path(@song.user, @song) %>
+
+      <br><br>
+
+      <audio controls>
+        <source src="<%= @song.url.url %>" type="audio/ogg">
+        <source src="<%= @song.url.url %>" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <h5>By: <%= link_to @song.user.name, @song.user %></h5>
+
+      <h5>Genre:
+        <% if @song.genre != "" %>
+          <%= @song.genre %>
+        <% else %>
+          n/a
+        <% end %>
+      </h5>
+    <% else %>
+      <p>Currently, no songs exist. <%= link_to "Would you like to create one?", new_user_song_path(current_user) %></p>
+    <% end %>
   </div>
 
   <div class="translucent center-text margins padding">
@@ -66,25 +76,29 @@
   <div class="translucent center-text margins padding">
     <h1>Popular Songs</h1>
     <div class="flex">
-      <% @songs.each do |s| %>
-        <div class="translucent padding margins">
-          <h3><%= link_to s.title, user_song_path(s.user, s) %></h3>
-          <%= link_to (image_tag s.avatar.url(:thumb)), user_song_path(s.user, s) %>
-          <br><br>
-          <audio controls>
-            <source src="<%= @song.url.url %>" type="audio/ogg">
-            <source src="<%= @song.url.url %>" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
-          <h5>By: <%= link_to s.user.name, s.user %></h5>
-          <h5>Genre:
-            <% if s.genre != "" %>
-              <%= s.genre %>
-            <% else %>
-              n/a
-            <% end %>
-          </h5>
-        </div>
+      <% if @songs && @songs.count > 0 %>
+        <% @songs.each do |s| %>
+          <div class="translucent padding margins">
+            <h3><%= link_to s.title, user_song_path(s.user, s) %></h3>
+            <%= link_to (image_tag s.avatar.url(:thumb)), user_song_path(s.user, s) %>
+            <br><br>
+            <audio controls>
+              <source src="<%= @song.url.url %>" type="audio/ogg">
+              <source src="<%= @song.url.url %>" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+            <h5>By: <%= link_to s.user.name, s.user %></h5>
+            <h5>Genre:
+              <% if s.genre != "" %>
+                <%= s.genre %>
+              <% else %>
+                n/a
+              <% end %>
+            </h5>
+          </div>
+        <% end %>
+      <% else %>
+          Currently, we have no songs.
       <% end %>
     </div>
   </div>

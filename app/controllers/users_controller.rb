@@ -35,8 +35,6 @@ class UsersController < ApplicationController
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account."
       redirect_to login_path
-      # session[:user_id] = @user.id
-      # redirect_to user_path(@user)
     else
       flash[:errors] = @user.errors.full_messages
       render :new

@@ -14,6 +14,10 @@
       <div class="translucent center center-text">
         <h2>Playlist Mood Not Found</h2>
         <h3>List of Available Moods!</h3>
+        <% if @moods.count < 1 %>
+          <p>Currently no playlist exist, <%= link_to "would you like to create one?", new_user_playlist_path(current_user) %></p>
+        <% end %>
+
       </div>
       <% @moods.each do |m| %>
         <%= form_tag(user_playlists_path(@user), :method => "get", id: "search-form") do %>
